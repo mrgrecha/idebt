@@ -1,8 +1,10 @@
 import HomeScreen from '../screens/Home';
 import OptionsScreen from '../screens/Options';
-import { createStackNavigator } from 'react-navigation';
+import signInScreen from '../screens/auth/signIn';
+import signUpScreen from '../screens/auth/signUp';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-const RootStack = createStackNavigator(
+export const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     Options: OptionsScreen,
@@ -12,4 +14,11 @@ const RootStack = createStackNavigator(
   }
 );
 
-export default RootStack;
+export const AuthTabs = createBottomTabNavigator(
+  {
+    SignIn: { screen: signInScreen },
+    SignUp: { screen: signUpScreen },
+  },
+  {
+    animationEnabled: true,
+});
