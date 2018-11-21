@@ -1,14 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
-import { AuthTabs } from './config/routes';
-import { RootStack } from './config/routes';
 import store from './config/store';
+import App from './app';
 
 // TO DO get value from async storage about user
-const a = false ? (<RootStack/>) : (<AuthTabs/>);
 export default () => (
     <Provider store={store}>
-      {a}
+      <App/>
     </Provider>
 );

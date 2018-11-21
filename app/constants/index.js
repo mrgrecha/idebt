@@ -6,3 +6,4 @@ const asyncActionType = (type) => ({
 
 
 export const CHANGE_BUTTON_COLOR = 'CHANGE_BUTTON_COLOR';
+export const SIGN_IN = 'SIGN_IN';

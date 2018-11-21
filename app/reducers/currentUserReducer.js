@@ -1,13 +1,15 @@
-import { CHANGE_BUTTON_COLOR } from '../constants';
+import { SIGN_IN } from '../constants';
 
 const initialState = {
-  user: {},
+  isLoaded: false,
+  isLogged: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CHANGE_BUTTON_COLOR:
-      return { ...state, foo: action.color };
+    // TO DO Dima add immutable
+    case SIGN_IN:
+      return { isLoaded: false, isLogged: true };
     default:
       return state;
   }

@@ -12,9 +12,9 @@ import {
 } from 'react-native';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-import { connect } from 'react-redux'
-
-// import { authenticate, confirmUserLogin } from '../actions'
+import { connect } from 'react-redux';
+import { saveDataInStorage } from '../../helpers/storage';
+import { signIn } from '../../actions/current_user';
 
 class SignIn extends Component {
   state = {
@@ -26,10 +26,13 @@ class SignIn extends Component {
     this.setState({
       [key]: value
     })
-  }
+  };
 
+  // Currently we will keep only boolean field to determine if user is logged in
   signIn() {
-
+    saveDataInStorage('isLogged', 'true');
+    console.log('State of signIn:', this.props);
+    this.props.login();
   }
 
   render() {
@@ -68,13 +71,13 @@ class SignIn extends Component {
   }
 }
 
-const mapDispatchToProps = {
-  // dispatchConfirmUserLogin: authCode => confirmUserLogin(authCode),
-  // dispatchAuthenticate: (username, password) => authenticate(username, password)
+const mapDispatchToProps = dispatch => {
+  return {
+    login: () => dispatch(signIn())
+  }
 }
 
 const mapStateToProps = state => ({
-  // auth: state.auth
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

@@ -15,16 +15,15 @@ import { connect } from 'react-redux';
 
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-
-const initialState = {
-  username: '',
-  password: '',
-  email: '',
-  phone_number: '',
-}
+import { fetchDataFromStorage, saveDataInStorage } from '../../helpers/storage';
 
 class SignUp extends Component {
-  state = initialState
+  state = {
+    username: '',
+    password: '',
+    email: '',
+    phone_number: '',
+  }
 
   onChangeText = (key, value) => {
     this.setState({
@@ -33,8 +32,7 @@ class SignUp extends Component {
   }
 
   signUp() {
-    // const { username, password, email, phone_number } = this.state
-    // this.props.dispatchCreateUser(username, password, email, phone_number)
+    // saveDataInStorage('foo', 'bar');
   }
 
   confirm() {
