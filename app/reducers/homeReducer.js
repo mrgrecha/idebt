@@ -1,14 +1,15 @@
-import { CHANGE_BUTTON_COLOR } from '../constants';
+import { fromJS } from 'immutable';
+import homeHandlers from './handlers/currentUserHandlers';
+
+const ACTION_HANDLERS = {
+  ...homeHandlers,
+};
 
 const initialState = {
-  buttonColor: '',
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case CHANGE_BUTTON_COLOR:
-      return { ...state, buttonColor: action.color };
-    default:
-      return state;
-  }
-};
+export default function homeReducer(state = initialState, action) {
+  const newState = fromJS(state);
+  const handler = ACTION_HANDLERS[action.type];
+  return handler ? handler(newState, action).toJS() : newState.toJS();
+}

@@ -4,7 +4,7 @@ import { RootStack } from './config/routes';
 import { fetchDataFromStorage } from './helpers/storage';
 import SpinnerScreen from './screens/spinner';
 import { connect } from 'react-redux';
-
+import { currentUserLoadedSelector, currentUserLoggedSelector } from './selectors';
 class App extends React.Component {
   componentDidMount() {
     // TO DO Dima add initializing data from async storage
@@ -36,15 +36,11 @@ class App extends React.Component {
 
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  };
-};
+const mapDispatchToProps = dispatch => ({});
 
 const mapStateToProps = state => ({
-  isLogged: state.current_user.isLogged,
-  isLoaded: state.current_user.isLoaded,
+  isLogged: currentUserLoggedSelector(state),
+  isLoaded: currentUserLoadedSelector(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

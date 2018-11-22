@@ -15,3 +15,11 @@ export const saveDataInStorage  = async (key, value) => {
     console.log(error);
   }
 }
+
+export const clearDataInStorage  = async () => {
+  try {
+    await AsyncStorage.clear();
+  } catch (error) {
+    console.log(error);
+  }
+}

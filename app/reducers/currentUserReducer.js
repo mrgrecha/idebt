@@ -1,16 +1,18 @@
-import { SIGN_IN } from '../constants';
+
+import { fromJS } from 'immutable';
+import currentUserHandlers from './handlers/currentUserHandlers';
+
+const ACTION_HANDLERS = {
+  ...currentUserHandlers,
+};
 
 const initialState = {
   isLoaded: false,
   isLogged: false
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    // TO DO Dima add immutable
-    case SIGN_IN:
-      return { isLoaded: false, isLogged: true };
-    default:
-      return state;
-  }
-};
+export default function uiReducer(state = initialState, action) {
+  const newState = fromJS(state);
+  const handler = ACTION_HANDLERS[action.type];
+  return handler ? handler(newState, action).toJS() : newState.toJS();
+}

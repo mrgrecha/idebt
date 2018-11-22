@@ -32,12 +32,9 @@ class SignUp extends Component {
   }
 
   signUp() {
-    // saveDataInStorage('foo', 'bar');
   }
 
   confirm() {
-    // const { authCode, username } = this.state
-    // this.props.dispatchConfirmUser(username, authCode)
   }
 
   render() {

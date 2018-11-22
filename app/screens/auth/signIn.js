@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   Text,
   View,
-  TextInput,
   StyleSheet,
-  TouchableOpacity,
-  ActivityIndicator,
-  Image,
-  Modal,
 } from 'react-native';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
@@ -31,7 +25,6 @@ class SignIn extends Component {
   // Currently we will keep only boolean field to determine if user is logged in
   signIn() {
     saveDataInStorage('isLogged', 'true');
-    console.log('State of signIn:', this.props);
     this.props.login();
   }
 
@@ -75,12 +68,11 @@ const mapDispatchToProps = dispatch => {
   return {
     login: () => dispatch(signIn())
   }
-}
+};
 
-const mapStateToProps = state => ({
-})
+const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
 
 const styles = StyleSheet.create({
   modal: {
