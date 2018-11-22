@@ -1,14 +1,17 @@
+
 import { fromJS } from 'immutable';
-import homeHandlers from './handlers/currentUserHandlers';
+import currentUserHandlers from './handlers/currentUserHandlers';
 
 const ACTION_HANDLERS = {
-  ...homeHandlers,
+  ...currentUserHandlers,
 };
 
 const initialState = {
+  isLoaded: false,
+  isLogged: false,
 };
 
-export default function homeReducer(state = initialState, action) {
+export default function uiReducer(state = initialState, action) {
   const newState = fromJS(state);
   const handler = ACTION_HANDLERS[action.type];
   return handler ? handler(newState, action).toJS() : newState.toJS();

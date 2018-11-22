@@ -1,11 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
-import Navigator from './config/routes';
 import store from './config/store';
+import App from './app';
 
 export default () => (
-    <Provider store={store}>
-      <Navigator onNavigationStateChange={null} />
-    </Provider>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
