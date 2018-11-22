@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 class App extends React.Component {
   componentDidMount() {
     // TO DO Dima add initializing data from async storage
+    // TO DO Dima add loading from storage init data
     // fetchDataFromStorage('isLogged').then((e) => {
     //   this.setState({ isLoaded: true,
     //                   navigator: e ? <RootStack/> : <AuthTabs/>

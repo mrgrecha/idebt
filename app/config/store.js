@@ -1,18 +1,11 @@
-import { createStore, applyMiddleware } from 'redux';
-// import logger from 'redux-logger';
-// import createSagaMiddleware from 'redux-saga';
+import { createStore, applyMiddleware, compose } from 'redux';
 
-import reducer from '../reducers';
-// import rootSaga from './sagas';
+import thunk from 'redux-thunk';
+import reducers from '../reducers';
+import Ajax from './ajax';
 
-// const sagaMiddleware = createSagaMiddleware();
-// const middleware = [sagaMiddleware];
-// if (process.env.NODE_ENV === 'development') {
-//   middleware.push(logger);
-// }
+const middleware = [thunk, Ajax];
 
-const store = createStore(reducer); //applyMiddleware(...middleware));
-
-// sagaMiddleware.run(rootSaga);
+const store = createStore(reducers, compose(applyMiddleware(...middleware)));
 
 export default store;

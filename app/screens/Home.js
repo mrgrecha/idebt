@@ -13,11 +13,23 @@ class HomeScreen extends Component {
           title="Go to Options"
           onPress={() => this.props.navigation.navigate('Options')}
         />
+        <Button
+        title="Log out"
+        onPress={() => this.props.navigation.navigate('Options')}
+      />
       </View>
     );
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapDispatchToProps = dispatch => {
+  return {
+    // TO DO add button for log out
+    logOut: () => dispatch(signOut())
+  }
+}
 
-export default connect(mapStateToProps)(HomeScreen);
+const mapStateToProps = state => ({
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
