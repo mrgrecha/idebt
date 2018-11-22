@@ -7,8 +7,8 @@ export default class SpinnerScreen extends Component {
     return (
       <View style={styles.container}>
         <Spinner
-          visible={true}
-          textContent={'Loading...'}
+          visible
+          textContent="Loading..."
         />
       </View>
     );
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
   },
 });

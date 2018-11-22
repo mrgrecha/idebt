@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
-  Modal
+  Modal,
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -27,8 +27,8 @@ class SignUp extends Component {
 
   onChangeText = (key, value) => {
     this.setState({
-      [key]: value
-    })
+      [key]: value,
+    });
   }
 
   signUp() {
@@ -50,32 +50,32 @@ class SignUp extends Component {
           <Input
             value={this.state.username}
             placeholder="User Name"
-            type='username'
+            type="username"
             onChangeText={this.onChangeText}
           />
           <Input
             value={this.state.email}
             placeholder="Email"
-            type='email'
+            type="email"
             onChangeText={this.onChangeText}
           />
           <Input
             value={this.state.password}
             placeholder="Password"
             secureTextEntry
-            type='password'
+            type="password"
             onChangeText={this.onChangeText}
           />
           <Input
             placeholder="Phone Number"
-            type='phone_number'
-            keyboardType='numeric'
+            type="phone_number"
+            keyboardType="numeric"
             onChangeText={this.onChangeText}
             value={this.state.phone_number}
           />
         </View>
         <Button
-          title='Sign Up'
+          title="Sign Up"
           onPress={this.signUp.bind(this)}
         />
       </View>
@@ -85,48 +85,48 @@ class SignUp extends Component {
 
 const mapStateToProps = state => ({
   // auth: state.auth
-})
+});
 
 const mapDispatchToProps = {
   // dispatchConfirmUser: (username, authCode) => confirmUserSignUp(username, authCode),
   // dispatchCreateUser: (username, password, email, phone_number) => createUser(username, password, email, phone_number)
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 const styles = StyleSheet.create({
   modal: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   inputContainer: {
-    marginTop: 20
+    marginTop: 20,
   },
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 40
+    paddingHorizontal: 40,
   },
   greeting: {
     marginTop: 20,
-    fontSize: 24
+    fontSize: 24,
   },
   greeting2: {
     color: '#666',
     fontSize: 24,
-    marginTop: 5
+    marginTop: 5,
   },
   heading: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   headingImage: {
     width: 38,
-    height: 38
+    height: 38,
   },
   errorMessage: {
     fontSize: 12,
     marginTop: 10,
-    color: 'transparent'
-  }
+    color: 'transparent',
+  },
 });

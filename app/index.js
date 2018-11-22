@@ -5,6 +5,6 @@ import App from './app';
 
 export default () => (
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>
 );

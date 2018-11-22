@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  ActivityIndicator
-} from 'react-native'
+  ActivityIndicator,
+} from 'react-native';
 
 
 export default ({ title, onPress }) => (
@@ -14,26 +14,25 @@ export default ({ title, onPress }) => (
       <Text style={[styles.buttonText]}>{title}</Text>
       {
         false && (
-          <View style={styles.activityIndicator}>
-          </View>
+          <View style={styles.activityIndicator} />
         )
       }
     </View>
   </TouchableOpacity>
-)
+);
 
 const styles = StyleSheet.create({
   button: {
     marginTop: 25,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   buttonText: {
     fontSize: 22,
-    letterSpacing: 0.5
+    letterSpacing: 0.5,
   },
   activityIndicator: {
-    transform: [{scale: 0.70}],
+    transform: [{ scale: 0.70 }],
     marginTop: 3.5,
-    marginLeft: 5
-  }
-})
+    marginLeft: 5,
+  },
+});

@@ -1,25 +1,25 @@
-import { AsyncStorage } from "react-native"
+import { AsyncStorage } from 'react-native';
 
-export const fetchDataFromStorage  = async (key) => {
+export const fetchDataFromStorage = async (key) => {
   try {
     await AsyncStorage.getItem(key);
-   } catch (error) {
-     console.log(error);
+  } catch (error) {
+    console.log(error);
   }
 };
 
-export const saveDataInStorage  = async (key, value) => {
+export const saveDataInStorage = async (key, value) => {
   try {
     await AsyncStorage.setItem(key, value);
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-export const clearDataInStorage  = async () => {
+export const clearDataInStorage = async () => {
   try {
     await AsyncStorage.clear();
   } catch (error) {
     console.log(error);
   }
-}
+};

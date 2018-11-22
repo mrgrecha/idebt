@@ -4,9 +4,9 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-import { connect } from 'react-redux';
 import { saveDataInStorage } from '../../helpers/storage';
 import { signIn } from '../../actions/current_user';
 
@@ -18,8 +18,8 @@ class SignIn extends Component {
 
   onChangeText = (key, value) => {
     this.setState({
-      [key]: value
-    })
+      [key]: value,
+    });
   };
 
   // Currently we will keep only boolean field to determine if user is logged in
@@ -31,8 +31,7 @@ class SignIn extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.heading}>
-        </View>
+        <View style={styles.heading} />
         <Text style={[styles.greeting]}>
           Welcome back,
         </Text>
@@ -42,13 +41,13 @@ class SignIn extends Component {
         <View style={styles.inputContainer}>
           <Input
             placeholder="User Name"
-            type='username'
+            type="username"
             onChangeText={this.onChangeText}
             value={this.state.username}
           />
           <Input
             placeholder="Password"
-            type='password'
+            type="password"
             onChangeText={this.onChangeText}
             value={this.state.password}
             secureTextEntry
@@ -56,7 +55,7 @@ class SignIn extends Component {
         </View>
 
         <Button
-          title='Sign In'
+          title="Sign In"
           onPress={this.signIn.bind(this)}
         />
       </View>
@@ -64,11 +63,9 @@ class SignIn extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    login: () => dispatch(signIn())
-  }
-};
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch(signIn()),
+});
 
 const mapStateToProps = state => ({});
 
@@ -78,14 +75,14 @@ const styles = StyleSheet.create({
   modal: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   heading: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   headingImage: {
     width: 38,
-    height: 38
+    height: 38,
   },
   errorMessage: {
     fontSize: 12,
@@ -93,12 +90,12 @@ const styles = StyleSheet.create({
     color: 'transparent',
   },
   inputContainer: {
-    marginTop: 20
+    marginTop: 20,
   },
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 40
+    paddingHorizontal: 40,
   },
   greeting: {
     marginTop: 20,
@@ -108,5 +105,5 @@ const styles = StyleSheet.create({
     color: '#666',
     fontSize: 24,
     marginTop: 5,
-  }
+  },
 });

@@ -15,13 +15,11 @@ class HomeScreen extends Component {
       </View>
     );
   }
-};
+}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logOut: () => dispatch(signOut())
-  }
-};
+const mapDispatchToProps = dispatch => ({
+  logOut: () => dispatch(signOut()),
+});
 
 const mapStateToProps = state => ({});
 
