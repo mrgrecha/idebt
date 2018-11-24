@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
 import { saveDataInStorage } from '../../helpers/storage';
-import { signIn } from '../../actions/current_user';
+import { signIn } from '../../actions/currentUser';
 
 class SignIn extends Component {
   state = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, View, Text } from 'react-native';
-import { signOut } from '../actions/current_user';
+import { signOut } from '../actions/currentUser';
 
 class HomeScreen extends Component {
   render() {

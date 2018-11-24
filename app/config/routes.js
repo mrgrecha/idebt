@@ -1,5 +1,5 @@
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import HomeScreen from '../screens/home';
+import HomeScreen from '../screens/Home';
 import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 
