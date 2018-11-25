@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, View, Text } from 'react-native';
 import { signOut } from '../actions/currentUser';
+import { currentUserAuthTokenSelector } from '../selectors/currentUserSelectors';
 
 class HomeScreen extends Component {
   render() {
@@ -21,6 +22,8 @@ const mapDispatchToProps = dispatch => ({
   logOut: () => dispatch(signOut()),
 });
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  token: currentUserAuthTokenSelector(state),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

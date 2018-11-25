@@ -7,7 +7,6 @@ import {
 import { connect } from 'react-redux';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-import { saveDataInStorage } from '../../helpers/storage';
 import { signIn } from '../../actions/currentUser';
 
 class SignIn extends Component {
@@ -24,8 +23,12 @@ class SignIn extends Component {
 
   // Currently we will keep only boolean field to determine if user is logged in
   signIn() {
-    saveDataInStorage('isLogged', 'true');
-    this.props.login();
+    const { login } = this.props;
+    const { username, password } = this.state;
+    login({
+      username,
+      password,
+    });
   }
 
   render() {
@@ -64,7 +67,7 @@ class SignIn extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: () => dispatch(signIn()),
+  login: data => dispatch(signIn(data)),
 });
 
 const mapStateToProps = state => ({});

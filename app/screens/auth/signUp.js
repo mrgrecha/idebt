@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   Text,
   View,
-  TextInput,
   StyleSheet,
-  TouchableOpacity,
-  Image,
-  ActivityIndicator,
-  Modal,
 } from 'react-native';
 
 import { connect } from 'react-redux';
-
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-import { fetchDataFromStorage, saveDataInStorage } from '../../helpers/storage';
+import { signUp } from '../../actions/currentUser';
 
 class SignUp extends Component {
   state = {
     username: '',
     password: '',
     email: '',
-    phone_number: '',
+    telephone: '',
   }
 
   onChangeText = (key, value) => {
@@ -32,9 +25,18 @@ class SignUp extends Component {
   }
 
   signUp() {
-  }
-
-  confirm() {
+    const { signUp } = this.props;
+    const {
+      username, password, email, telephone,
+    } = this.state;
+    // TO DO fix annual income
+    signUp({
+      username,
+      password,
+      email,
+      telephone,
+      annual_income: '100000',
+    });
   }
 
   render() {
@@ -71,7 +73,7 @@ class SignUp extends Component {
             type="phone_number"
             keyboardType="numeric"
             onChangeText={this.onChangeText}
-            value={this.state.phone_number}
+            value={this.state.telephone}
           />
         </View>
         <Button
@@ -83,14 +85,12 @@ class SignUp extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  // auth: state.auth
+const mapDispatchToProps = dispatch => ({
+  signUp: data => dispatch(signUp(data)),
 });
 
-const mapDispatchToProps = {
-  // dispatchConfirmUser: (username, authCode) => confirmUserSignUp(username, authCode),
-  // dispatchCreateUser: (username, password, email, phone_number) => createUser(username, password, email, phone_number)
-};
+const mapStateToProps = state => ({
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 

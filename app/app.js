@@ -1,27 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AuthTabs } from './config/routes';
-import { RootStack } from './config/routes';
-import { fetchDataFromStorage } from './helpers/storage';
+import { AuthTabs, RootStack } from './config/routes';
+import { initializeWithDataFromStorage } from './actions/currentUser';
 import SpinnerScreen from './screens/spinner';
-import { currentUserLoadedSelector, currentUserLoggedSelector } from './selectors';
+import { currentUserLoadedSelector, currentUserAuthTokenSelector } from './selectors';
 
 class App extends React.Component {
-  componentDidMount() {
-    // TO DO Dima add initializing data from async storage
-    // TO DO Dima add loading from storage init data
-    // fetchDataFromStorage('isLogged').then((e) => {
-    //   this.setState({ isLoaded: true,
-    //                   navigator: e ? <RootStack/> : <AuthTabs/>
-    //                 });
-    // });
+  componentWillMount() {
+    this.props.initialize();
   }
 
   render() {
     // Temp fix before loading from storage
-    if (!this.props.isLoaded) {
+    if (this.props.isLoaded) {
       // TO DO Investigate why we cannot do it like const navigator = this.props.isLogged ? <RootStack/> : <AuthTabs/>
-      if (this.props.isLogged) {
+      if (this.props.authToken) {
         return (<RootStack />);
       }
       return (<AuthTabs />);
@@ -32,10 +25,12 @@ class App extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  initialize: () => dispatch(initializeWithDataFromStorage()),
+});
 
 const mapStateToProps = state => ({
-  isLogged: currentUserLoggedSelector(state),
+  authToken: currentUserAuthTokenSelector(state),
   isLoaded: currentUserLoadedSelector(state),
 });
 

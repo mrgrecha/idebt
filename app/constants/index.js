@@ -4,9 +4,15 @@ const asyncActionType = type => ({
   ERROR: `${type}_ERROR`,
 });
 
-export const BASE_API_URL = 'http://localhost:8888';
+// Add your own IP of expo app
+// Port is the same as backend
+export const BASE_API_URL = 'http://172.20.10.4:8000/';
 export const AJAX = 'AJAX';
+export const TEST_CONSTANT = asyncActionType('TEST_CONSTANT');
 
 // Auth
-export const SIGN_IN = 'SIGN_IN';
+export const SIGN_IN = asyncActionType('SIGN_IN');
 export const SIGN_OUT = 'SIGN_OUT';
+export const SIGN_UP = asyncActionType('SIGN_UP');
+export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
+export const DATA_LOADED = 'DATA_LOADED';
