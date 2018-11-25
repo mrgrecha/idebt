@@ -1,2 +1,2 @@
-export const currentUserLoggedSelector = state => state.currentUser.isLogged;
+export const currentUserAuthTokenSelector = state => state.currentUser.authToken;
 export const currentUserLoadedSelector = state => state.currentUser.isLoaded;

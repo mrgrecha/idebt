@@ -1,6 +1,16 @@
-import { SIGN_IN, SIGN_OUT } from '../../constants';
+import {
+  SIGN_IN,
+  SIGN_UP,
+  SIGN_OUT,
+  DATA_LOADED,
+  INITALIZE_WITH_DATA_FROM_STORAGE,
+} from '../../constants';
 
 export default {
-  [SIGN_IN]: state => state.set('isLogged', true),
-  [SIGN_OUT]: state => state.set('isLogged', false),
+  [SIGN_IN.SUCCESS]: (state, action) => state.set('authToken', action.response.token),
+  // TO DO Change format for saving token after Alex will fix it on backend
+  [SIGN_UP.SUCCESS]: (state, action) => state.set('authToken', action.response),
+  [SIGN_OUT]: state => state.set('authToken', null),
+  [DATA_LOADED]: state => state.set('isLoaded', true),
+  [INITALIZE_WITH_DATA_FROM_STORAGE]: (state, action) => state.set('authToken', action.payload.authToken),
 };

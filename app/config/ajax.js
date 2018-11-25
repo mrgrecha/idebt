@@ -1,4 +1,5 @@
 import { BASE_API_URL, AJAX } from '../constants';
+import store from './store';
 
 const axios = require('axios');
 
@@ -6,35 +7,44 @@ const ajax = ({ dispatch }) => next => (action) => {
   if (action.type !== AJAX) {
     return next(action);
   }
-  const { payload, meta } = action;
+  const { payload } = action;
   const versionOfAPI = payload && payload.version || 'v1';
-  const requestURL = payload.requestUrl ? payload.requestUrl : `${BASE_API_URL + versionOfAPI}/${payload.url}`;
+  const requestURL = `${`${BASE_API_URL}api/${versionOfAPI}`}/${payload.url}`;
   const payloadMethod = payload && payload.method || 'get';
+  const data = payload.data || {};
+  const handleStart = () => { dispatch({ type: payload.PENDING }); };
 
-  const handleStart = () => { dispatch({ type: payload.PENDING, meta }); };
+  // Currently I fetch auth token from redux store as faced strange things with async storage( I cannot fetch data from it before request as it is async. I've tried different ways but nothing helped)
+  const token = store.getState().currentUser.authToken;
 
-  const handleError = (error, errorData) => {
-    dispatch({ type: payload.ERROR, meta, payload: error.data });
+  const handleError = (error) => {
+    console.log('Error: ', error);
+    dispatch({ type: payload.ERROR, payload: error.data });
     throw error;
   };
 
   const handleSuccess = (response) => {
-    dispatch({ type: payload.SUCCESS, meta, response });
+    console.log(response);
+    dispatch({ type: payload.SUCCESS, response });
     return next(action);
   };
+  console.log({
+    method: payloadMethod,
+    url: requestURL,
+    data,
+  });
 
   handleStart();
   return axios({
     method: payloadMethod,
     url: requestURL,
-    data: payload.params,
-    // TO DO Add auth
-    // headers: {
-    //   'Authorization': localStorage.getItem('jwt_token'),
-    // }
+    data,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   }).then((response) => {
     if (response.status === 401) {
-      window.location.href = `${BASE_FRONTEND_URL}auth/sign_in`;
+      // TO DO add handling auth error
     }
     if (response.status >= 300) {
       handleError(`Error ${response.status}: ${response.statusText}`, response);
@@ -46,5 +56,6 @@ const ajax = ({ dispatch }) => next => (action) => {
     handleError(error.response);
   });
 };
+
 
 export default ajax;

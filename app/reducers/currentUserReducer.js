@@ -8,7 +8,8 @@ const ACTION_HANDLERS = {
 
 const initialState = {
   isLoaded: false,
-  isLogged: false,
+  testName: '',
+  authToken: null,
 };
 
 export default function uiReducer(state = initialState, action) {
