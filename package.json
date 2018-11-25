@@ -18,13 +18,15 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-native-elements": "^0.19.1",
     "react-native-loading-spinner-overlay": "^1.0.1",
+    "react-native-snap-carousel": "^3.7.5",
     "react-native-vector-icons": "^6.1.0",
     "react-navigation": "^2.18.2",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "yarn": "^1.12.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
