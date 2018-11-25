@@ -7,6 +7,7 @@ import StatisticsScreen from '../screens/statistics';
 
 import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
+import MyCarousel from '../screens/snap';
 
 
 export const RootStack = createDrawerNavigator(
