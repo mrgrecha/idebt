@@ -1,6 +1,7 @@
 import Carousel from 'react-native-snap-carousel';
 import React, { Component } from 'react';
-import { Button, View, Text,StyleSheet, Dimensions, Platform  } from 'react-native';
+import {  View, StyleSheet, Dimensions, Platform  } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 
 const horizontalMargin = 20;
 const slideWidth = 280;
@@ -28,11 +29,41 @@ export default class MyCarousel extends Component {
 
     _renderItem ({item, index}) {
         return (
-            <View style={styles.slide}>
-                <View style={styles.slideInnerContainer}>
-                  <Text>{ item.title }</Text>
-                </View>
-            </View>
+            <Container>
+        <Header />
+            <Content>
+              <Card>
+                // <CardItem>
+                //   <Left>
+        
+                //     <Body>
+                //       <Text>NativeBase</Text>
+                //       <Text note>GeekyAnts</Text>
+                //     </Body>
+                //   </Left>
+                // </CardItem>
+                // <CardItem cardBody>
+                // </CardItem>
+                // <CardItem>
+                //   <Left>
+                //     <Button transparent>
+                //       <Icon active name="thumbs-up" />
+                //       <Text>12 Likes</Text>
+                //     </Button>
+                //   </Left>
+                //   <Body>
+                //     <Button transparent>
+                //       <Icon active name="chatbubbles" />
+                //       <Text>4 Comments</Text>
+                //     </Button>
+                //   </Body>
+                //   <Right>
+                //     <Text>11h ago</Text>
+                //   </Right>
+                // </CardItem>
+              </Card>
+            </Content>
+          </Container>
         );
     }
 
