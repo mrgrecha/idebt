@@ -1,15 +1,32 @@
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import HomeScreen from '../screens/Home';
+import { createBottomTabNavigator, createDrawerNavigator } from 'react-navigation';
+import HomeScreen from '../screens/home';
+import DebtsScreen from '../screens/debts';
+import HistoryScreen from '../screens/history';
+import RequestsScreen from '../screens/requests';
+import StatisticsScreen from '../screens/statistics';
+
 import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 
-export const RootStack = createStackNavigator(
+
+export const RootStack = createDrawerNavigator(
   {
-    Home: HomeScreen,
-  },
-  {
-    initialRouteName: 'Home',
-  },
+    Home: {
+      screen: HomeScreen,
+    },
+    Debts: {
+      screen: DebtsScreen,
+    },
+    History: {
+      screen: HistoryScreen,
+    },
+    Requests: {
+      screen: RequestsScreen,
+    },
+    Statistics: {
+      screen: StatisticsScreen,
+    },
+  }
 );
 
 export const AuthTabs = createBottomTabNavigator(
