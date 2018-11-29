@@ -1,6 +1,7 @@
 import {
   SIGN_IN,
   SIGN_UP,
+  STAT,
   SIGN_OUT,
   AJAX,
   INITALIZE_WITH_DATA_FROM_STORAGE,
@@ -59,3 +60,15 @@ export const initializeWithDataFromStorage = () => (dispatch) => {
     dispatch({ type: DATA_LOADED });
   });
 };
+
+
+export const statistics = () => (
+   {
+    type: AJAX,
+    payload: {
+      url: 'user/me.json',
+      method: 'GET',
+      ...STAT,
+    },
+  }
+);

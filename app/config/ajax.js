@@ -32,6 +32,7 @@ const ajax = ({ dispatch }) => next => (action) => {
     method: payloadMethod,
     url: requestURL,
     data,
+    token,
   });
 
   handleStart();
@@ -43,6 +44,8 @@ const ajax = ({ dispatch }) => next => (action) => {
       Authorization: `Bearer ${token}`,
     },
   }).then((response) => {
+    console.log(response);
+
     if (response.status === 401) {
       // TO DO add handling auth error
     }

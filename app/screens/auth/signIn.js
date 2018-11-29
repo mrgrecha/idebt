@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-import { signIn } from '../../actions/currentUser';
+import { signIn, statistics } from '../../actions/currentUser';
 
 class SignIn extends Component {
   state = {
@@ -67,7 +67,7 @@ class SignIn extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: data => dispatch(signIn(data)),
+  login: data => dispatch(signIn(data))
 });
 
 const mapStateToProps = state => ({});
