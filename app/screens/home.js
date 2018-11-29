@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, View, Text } from 'react-native';
-import { signOut, statistics } from '../actions/currentUser';
+import { signOut } from '../actions/currentUser';
 import { currentUserAuthTokenSelector } from '../selectors/currentUserSelectors';
 
 class HomeScreen extends Component {
@@ -21,10 +21,7 @@ class HomeScreen extends Component {
           title="snap"
           onPress={() => navigate('Snap')}
         />
-        <Button
-          title="get data"
-          onPress={() => this.props.statist()}
-        />
+
       </View>
     );
   }
@@ -32,7 +29,6 @@ class HomeScreen extends Component {
 
 const mapDispatchToProps = dispatch => ({
   logOut: () => dispatch(signOut()),
-  statist: () => dispatch(statistics()),
 });
 
 const mapStateToProps = state => ({
