@@ -6,7 +6,7 @@ const asyncActionType = type => ({
 
 // Add your own IP of expo app
 // Port is the same as backend
-export const BASE_API_URL = 'http://172.20.10.2:8000/';
+export const BASE_API_URL = 'http://192.168.0.107:8000/';
 export const AJAX = 'AJAX';
 export const TEST_CONSTANT = asyncActionType('TEST_CONSTANT');
 
