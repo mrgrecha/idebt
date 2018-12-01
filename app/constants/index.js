@@ -1,3 +1,7 @@
+import { API_KEY, ANOTHER_CONFIG } from 'react-native-dotenv'
+ 
+ApiClient.init(API_KEY, ANOTHER_CONFIG)
+
 const asyncActionType = type => ({
   PENDING: `${type}_PENDING`,
   SUCCESS: `${type}_SUCCESS`,
@@ -13,7 +17,7 @@ export const TEST_CONSTANT = asyncActionType('TEST_CONSTANT');
 // Auth
 export const SIGN_IN = asyncActionType('SIGN_IN');
 export const SIGN_OUT = 'SIGN_OUT';
-export const STAT = asyncActionType('STAT');
+export const FETCH_STATISTICS = asyncActionType('STAT');
 export const SIGN_UP = asyncActionType('SIGN_UP');
 export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
 export const DATA_LOADED = 'DATA_LOADED';

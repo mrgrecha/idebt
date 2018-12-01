@@ -10,7 +10,7 @@ const initialState = {
   isLoaded: false,
   testName: '',
   authToken: null,
-  stats: {},
+  data: {},
 };
 
 export default function uiReducer(state = initialState, action) {
