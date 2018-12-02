@@ -62,7 +62,7 @@ export const initializeWithDataFromStorage = () => (dispatch) => {
 };
 
 
-export const fetch_statistics = () => (
+export const fetchStatistics = () => (
    {
     type: AJAX,
     payload: {
