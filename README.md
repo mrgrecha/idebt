@@ -30,4 +30,4 @@ Run iDebt on 0.0.0.0:8000:
 python3 manage.py runserver 0.0.0.0:8000
 ```
 When you run expo you can find IP of it(on top of the QR-code). Add it to ALLOWED_HOSTS in [settings](https://github.com/alexanderSvito/idebt-finance/blob/master/idebt/settings.py)
-Then update constant BASE_API_URL in [constans](https://github.com/mrgrecha/idebt/blob/master/app/constants/index.js)
+Then update constant LOCAL_API_IP in [.env](https://github.com/mrgrecha/idebt/blob/master/.env)
