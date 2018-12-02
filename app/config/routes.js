@@ -4,7 +4,7 @@ import DebtsScreen from '../screens/debts';
 import HistoryScreen from '../screens/history';
 import RequestsScreen from '../screens/requests';
 import StatisticsScreen from '../screens/statistics';
-
+import MenuHeader from '../components/HOC/menuHeader';
 import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 
@@ -12,21 +12,21 @@ import signUpScreen from '../screens/auth/signUp';
 export const RootStack = createDrawerNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: MenuHeader(HomeScreen),
     },
     Debts: {
-      screen: DebtsScreen,
+      screen: MenuHeader(DebtsScreen),
     },
     History: {
-      screen: HistoryScreen,
+      screen: MenuHeader(HistoryScreen),
     },
     Requests: {
-      screen: RequestsScreen,
+      screen: MenuHeader(RequestsScreen),
     },
     Statistics: {
-      screen: StatisticsScreen,
+      screen: MenuHeader(StatisticsScreen),
     },
-  }
+  },
 );
 
 export const AuthTabs = createBottomTabNavigator(
