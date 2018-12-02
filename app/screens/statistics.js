@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native'
 import { connect } from 'react-redux';
-import { fetch_statistics } from '../actions/currentUser';
+import { fetchStatistics } from '../actions/currentUser';
 import { currentUserAuthTokenSelector, currentUserStatisticsSelector } from '../selectors/currentUserSelectors';
 
 class StatisticsScreen extends Component {
-	componentWillMount() {
-		this.props.fetch_statistics()
-	}
+  componentWillMount() {
+    this.props.fetch_statistics()
+  }
 
   render() {
     return (
@@ -27,7 +27,7 @@ class StatisticsScreen extends Component {
 
 
 const mapDispatchToProps = dispatch => ({
-  fetch_statistics: () => dispatch(fetch_statistics()),
+  fetch_statistics: () => dispatch(fetchStatistics()),
 });
 
 const mapStateToProps = state => ({
