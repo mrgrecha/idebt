@@ -18,5 +18,7 @@ export const SIGN_IN = asyncActionType('SIGN_IN');
 export const SIGN_OUT = 'SIGN_OUT';
 export const FETCH_STATISTICS = asyncActionType('FETCH_STATISTICS');
 export const SIGN_UP = asyncActionType('SIGN_UP');
+export const CREATE_ISSUE = asyncActionType('CREATE_ISSUE')
+export const CREATE_OFFER = asyncActionType('CREATE_OFFER')
 export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
 export const DATA_LOADED = 'DATA_LOADED';
