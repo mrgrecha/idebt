@@ -3,6 +3,8 @@ import {
   SIGN_UP,
   FETCH_STATISTICS,
   SIGN_OUT,
+  CREATE_ISSUE,
+  CREATE_OFFER,
   AJAX,
   INITALIZE_WITH_DATA_FROM_STORAGE,
   DATA_LOADED,
@@ -72,3 +74,28 @@ export const fetchStatistics = () => (
     },
   }
 );
+
+export const createIssue = data => (
+  dispatch => dispatch({
+    type: AJAX,
+    payload: {
+      data,
+      url: 'issues/',
+      method: 'POST',
+      ...CREATE_ISSUE,
+    },
+  })
+);
+
+export const createOffer = data => (
+  dispatch => dispatch({
+    type: AJAX,
+    payload: {
+      data,
+      url: 'offers/',
+      method: 'POST',
+      ...CREATE_OFFER,
+    },
+  })
+);
+
