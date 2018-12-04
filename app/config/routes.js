@@ -1,21 +1,51 @@
 import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import HomeScreen from '../screens/home';
-import DebtsScreen from '../screens/debts';
+import IssuesScreen from '../screens/issues';
 import HistoryScreen from '../screens/history';
-import RequestsScreen from '../screens/requests';
+import OffersScreen from '../screens/offers';
 import StatisticsScreen from '../screens/statistics';
 import MenuHeader from '../components/HOC/menuHeader';
 import IssueFormScreen from '../screens/forms/issueForm';
 import OfferFormScreen from '../screens/forms/offerForm';
 import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
+import OffersSwiperScreen from '../screens/swipers/offersSwiper';
+import IssuesSwiperScreen from '../screens/swipers/issuesSwiper';
 
+export const OffersStackScreen = createStackNavigator(
+  {
+    Offer: {
+      screen: MenuHeader(OffersScreen),
+    },
+    IssuesSwiper: {
+      screen: IssuesSwiperScreen
+    }
+  },
+  {
+    headerMode: 'none',
+  }
+);
+
+export const IssuesStackScreen = createStackNavigator(
+  {
+    Issue: {
+      screen: MenuHeader(IssuesScreen),
+    },
+    OffersSwiper: {
+      screen: OffersSwiperScreen
+    }
+  },
+  {
+    headerMode: 'none',
+  }
+);
 
 export const MainScreen = createStackNavigator(
   {
     Home: {
       screen: MenuHeader(HomeScreen),
     },
+
     Issue: {
       screen: MenuHeader(IssueFormScreen),
     },
@@ -26,21 +56,22 @@ export const MainScreen = createStackNavigator(
   {
     headerMode: 'none',
   }
-  )
+);
 
 export const RootStack = createDrawerNavigator(
   {
     Home: {
       screen: MainScreen,
     },
-    Debts: {
-      screen: MenuHeader(DebtsScreen),
+
+    Issues: {
+      screen: IssuesStackScreen
     },
     History: {
       screen: MenuHeader(HistoryScreen),
     },
-    Requests: {
-      screen: MenuHeader(RequestsScreen),
+    Offers: {
+      screen: OffersStackScreen,
     },
     Statistics: {
       screen: MenuHeader(StatisticsScreen),
