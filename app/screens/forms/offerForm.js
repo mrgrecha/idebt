@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
-import Input from '../components/shared/input';
-import Button from '../components/shared/button';
-import { createOffer } from '../actions/currentUser';
-import { currentUserAuthTokenSelector } from '../selectors/currentUserSelectors';
+import Input from '../../components/shared/input';
+import Button from '../../components/shared/button';
+import { createOffer } from '../../actions/currentUser';
 
 class OfferFormScreen extends Component {
   state = {
@@ -100,7 +99,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  token: currentUserAuthTokenSelector(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OfferFormScreen);

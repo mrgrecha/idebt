@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
-import Input from '../components/shared/input';
-import Button from '../components/shared/button';
-import { createIssue } from '../actions/currentUser';
-import { currentUserAuthTokenSelector } from '../selectors/currentUserSelectors';
+import Input from '../../components/shared/input';
+import Button from '../../components/shared/button';
+import { createIssue } from '../../actions/currentUser';
 
 class IssueFormScreen extends Component {
   state = {
@@ -36,7 +35,7 @@ class IssueFormScreen extends Component {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={styles.greeting2}>
-          Fill in your desired criteria 
+            Fill in your desired criteria 
           </Text>
           <View style={styles.inputContainer}>
             <Input
@@ -72,7 +71,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  token: currentUserAuthTokenSelector(state),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssueFormScreen);

@@ -5,8 +5,8 @@ import HistoryScreen from '../screens/history';
 import RequestsScreen from '../screens/requests';
 import StatisticsScreen from '../screens/statistics';
 import MenuHeader from '../components/HOC/menuHeader';
-import IssueFormScreen from '../screens/issueForm';
-import OfferFormScreen from '../screens/offerForm';
+import IssueFormScreen from '../screens/forms/issueForm';
+import OfferFormScreen from '../screens/forms/offerForm';
 import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 
