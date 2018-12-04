@@ -6,19 +6,24 @@ const asyncActionType = type => ({
   ERROR: `${type}_ERROR`,
 });
 
-// Add your own IP of expo app
-// Port is the same as backend
-
+// App settings
 export const BASE_API_URL = LOCAL_API_IP;
 export const AJAX = 'AJAX';
-export const TEST_CONSTANT = asyncActionType('TEST_CONSTANT');
+export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
 
-// Auth
-export const SIGN_IN = asyncActionType('SIGN_IN');
-export const SIGN_OUT = 'SIGN_OUT';
+// API requests
 export const FETCH_STATISTICS = asyncActionType('FETCH_STATISTICS');
+export const FETCH_OFFERS = asyncActionType('FETCH_OFFERS');
+export const FETCH_ISSUES = asyncActionType('FETCH_ISSUES');
+export const FETCH_SUITABLE_OFFERS = asyncActionType('FETCH_SUITABLE_OFFERS');
+export const FETCH_SUITABLE_ISSUES = asyncActionType('FETCH_SUITABLE_ISSUES');
 export const SIGN_UP = asyncActionType('SIGN_UP');
 export const CREATE_ISSUE = asyncActionType('CREATE_ISSUE')
 export const CREATE_OFFER = asyncActionType('CREATE_OFFER')
-export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
+export const SIGN_IN = asyncActionType('SIGN_IN');
+
+// App constants
+export const SIGN_OUT = 'SIGN_OUT';
+export const CHOOSE_OFFER = 'CHOOSE_OFFER';
+export const CHOOSE_ISSUE = 'CHOOSE_ISSUE';
 export const DATA_LOADED = 'DATA_LOADED';

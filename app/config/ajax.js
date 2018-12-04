@@ -24,7 +24,8 @@ const ajax = ({ dispatch }) => next => (action) => {
   };
 
   const handleSuccess = (response) => {
-    console.log(response);
+    console.log('success: ', response);
+    console.log('payload: ', payload);
     dispatch({ type: payload.SUCCESS, response });
     return next(action);
   };
@@ -44,7 +45,7 @@ const ajax = ({ dispatch }) => next => (action) => {
       Authorization: `Bearer ${token}`,
     },
   }).then((response) => {
-    console.log(response);
+    console.log('response: ', response);
 
     if (response.status === 401) {
       // TO DO add handling auth error

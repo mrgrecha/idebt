@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-import { createOffer } from '../../actions/currentUser';
+import { createOffer } from '../../actions';
 
 class OfferFormScreen extends Component {
   state = {
@@ -45,7 +45,7 @@ class OfferFormScreen extends Component {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={styles.greeting2}>
-          Fill in your desired criteria 
+          Fill in your desired criteria
           </Text>
           <View style={styles.inputContainer}>
             <Input
