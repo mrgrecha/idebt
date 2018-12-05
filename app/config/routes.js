@@ -33,9 +33,6 @@ export const RootStack = createDrawerNavigator(
     Home: {
       screen: MainScreen,
     },
-    // Home: {
-    //   screen: MenuHeader(HomeScreen),
-    // },
     Debts: {
       screen: MenuHeader(DebtsScreen),
     },
