@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
-import { signUp } from '../../actions/currentUser';
+import { signUp } from '../../actions/auth';
 
 class SignUp extends Component {
   state = {

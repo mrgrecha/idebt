@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AuthTabs, RootStack } from './config/routes';
-import { initializeWithDataFromStorage } from './actions/currentUser';
+import { initializeWithDataFromStorage } from './actions/auth';
 import SpinnerScreen from './screens/spinner';
 import { currentUserLoadedSelector, currentUserAuthTokenSelector } from './selectors';
 
