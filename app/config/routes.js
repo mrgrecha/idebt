@@ -11,6 +11,9 @@ import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 import OffersSwiperScreen from '../screens/swipers/offersSwiper';
 import IssuesSwiperScreen from '../screens/swipers/issuesSwiper';
+import OnOfferDebtsScreen from '../screens/debts/onOffers';
+import OnIssueDebtsScreen from '../screens/debts/onIssues';
+
 
 export const OffersStackScreen = createStackNavigator(
   {
@@ -45,7 +48,6 @@ export const MainScreen = createStackNavigator(
     Home: {
       screen: MenuHeader(HomeScreen),
     },
-
     Issue: {
       screen: MenuHeader(IssueFormScreen),
     },
@@ -58,14 +60,26 @@ export const MainScreen = createStackNavigator(
   }
 );
 
+export const DebtsTabs = createBottomTabNavigator(
+  {
+    onOfferDebts: { screen: MenuHeader(OnOfferDebtsScreen) },
+    onIssueDebts: { screen: MenuHeader(OnIssueDebtsScreen) },
+  },
+  {
+    animationEnabled: true,
+  },
+);
+
 export const RootStack = createDrawerNavigator(
   {
     Home: {
       screen: MainScreen,
     },
-
     Issues: {
-      screen: IssuesStackScreen
+      screen: IssuesStackScreen,
+    },
+    Debts: {
+      screen: DebtsTabs,
     },
     History: {
       screen: MenuHeader(HistoryScreen),
@@ -78,6 +92,7 @@ export const RootStack = createDrawerNavigator(
     },
   },
 );
+
 
 export const AuthTabs = createBottomTabNavigator(
   {
