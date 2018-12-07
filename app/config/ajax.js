@@ -37,14 +37,17 @@ const ajax = ({ dispatch }) => next => (action) => {
   });
 
   handleStart();
-  return axios({
+  const params = {
     method: payloadMethod,
     url: requestURL,
     data,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((response) => {
+    headers: {},
+  };
+
+  if (token) {
+    params.headers['Authorization'] = `Bearer ${token}`;
+  }
+  return axios(params).then((response) => {
     console.log('response: ', response);
 
     if (response.status === 401) {
