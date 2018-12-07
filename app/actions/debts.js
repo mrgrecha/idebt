@@ -38,5 +38,4 @@ export const repayDebt = (debtId) => (
     },
   }).then(() => {
     dispatch(fetchStatistics());
-
 }));
