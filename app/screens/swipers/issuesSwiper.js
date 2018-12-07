@@ -4,6 +4,7 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import IssueCard from '../../components/swiper/issueCard';
 import { connect } from 'react-redux';
 import { fetchSuitableIssues } from '../../actions/offers';
+import { createIssueMatch } from '../../actions/issues';
 import { offerIdSelector, suitableIssuesSelector } from '../../selectors';
 import SpinnerScreen from '../spinner';
 
@@ -23,12 +24,19 @@ class IssuesSwiperScreen extends Component {
     console.log('Cards finished');
   };
 
-  swipeLeft = () => {
+  swipeLeft = (index) => {
     console.log('Left');
   };
 
-  swipeRight = () => {
-    console.log('Right');
+  swipeRight = (index) => {
+    const { suitableIssues, currentOfferId } = this.props;
+    const currentIssue = suitableIssues[index];
+    const matchData = {
+      from_id: currentOfferId,
+      to_id: currentIssue.id,
+      match_type: 'ISS',
+    };
+    this.props.createMatch(matchData);
   };
 
   tapCard = () => {
@@ -53,8 +61,8 @@ class IssuesSwiperScreen extends Component {
           ref={swiper => {
             this.swiper = swiper
           }}
-          onSwipedLeft={() => this.swipeLeft()}
-          onSwipedRight={() => this.swipeRight()}
+          onSwipedLeft={(index) => this.swipeLeft(index)}
+          onSwipedRight={(index) => this.swipeRight(index)}
           onTapCard={this.tapCard()}
           cards={this.props.suitableIssues}
           cardVerticalMargin={80}
@@ -121,6 +129,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = dispatch => ({
   fetchSuitableIssues: (offerId) => dispatch(fetchSuitableIssues(offerId)),
+  createMatch: (data) => dispatch(createIssueMatch(data)),
 });
 
 const mapStateToProps = state => ({

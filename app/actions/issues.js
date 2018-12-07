@@ -5,6 +5,7 @@ import {
   FETCH_SUITABLE_OFFERS,
   CHOOSE_ISSUE,
   CREATE_ISSUE,
+  CREATE_ISSUE_MATCH,
 } from '../constants';
 
 export const fetchIssues = () => (
@@ -34,14 +35,22 @@ export const chooseIssue = (id) => ({
   },
 });
 
-export const createIssue = data => (
-  dispatch => dispatch({
-    type: AJAX,
-    payload: {
-      data,
-      url: 'issues/',
-      method: 'POST',
-      ...CREATE_ISSUE,
-    },
-  })
-);
+export const createIssue = (data) => ({
+  type: AJAX,
+  payload: {
+    data,
+    url: 'issues/',
+    method: 'POST',
+    ...CREATE_ISSUE,
+  },
+});
+
+export const createIssueMatch = (data) => ({
+  type: AJAX,
+  payload: {
+    url: `match/`,
+    data,
+    method: 'POST',
+    ...CREATE_ISSUE_MATCH,
+  },
+});
