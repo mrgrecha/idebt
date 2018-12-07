@@ -7,6 +7,7 @@ const ACTION_HANDLERS = {
 
 const initialState = {
   debtsIOwe: [],
+  debtsOweMe: [],
 };
 
 export default function homeReducer(state = initialState, action) {

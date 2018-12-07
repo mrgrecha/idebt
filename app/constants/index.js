@@ -7,7 +7,7 @@ const asyncActionType = type => ({
 });
 
 // App settings
-export const BASE_API_URL = 'http://192.168.0.106:8000/';
+export const BASE_API_URL = LOCAL_API_IP;
 export const AJAX = 'AJAX';
 export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
 
@@ -18,6 +18,8 @@ export const FETCH_ISSUES = asyncActionType('FETCH_ISSUES');
 export const FETCH_SUITABLE_OFFERS = asyncActionType('FETCH_SUITABLE_OFFERS');
 export const FETCH_SUITABLE_ISSUES = asyncActionType('FETCH_SUITABLE_ISSUES');
 export const FETCH_DEBTS_I_OWE = asyncActionType('FETCH_DEBTS_I_OWE');
+export const FETCH_DEBTS_OWE_ME = asyncActionType('FETCH_DEBTS_OWE_ME');
+export const REPAY_DEBTS = asyncActionType('REPAY_DEBTS');
 export const SIGN_UP = asyncActionType('SIGN_UP');
 export const CREATE_ISSUE = asyncActionType('CREATE_ISSUE')
 export const CREATE_OFFER = asyncActionType('CREATE_OFFER')

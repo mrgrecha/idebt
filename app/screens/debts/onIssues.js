@@ -4,7 +4,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import Input from '../../components/shared/input';
 import Button from '../../components/shared/button';
 import { debtsIOweSelector } from '../../selectors';
-import { fetchDebtsIOwe } from '../../actions/debts';
+import { fetchDebtsIOwe, repayDebt } from '../../actions/debts';
+import IOweDebt from '../../components/debts/iOwe.js';
 
 class OnIssueDebtsScreen extends Component {
   componentWillMount() {
@@ -14,17 +15,18 @@ class OnIssueDebtsScreen extends Component {
   render() {
     console.log(this.props.debtsIOwe)
     const listOfDebts= this.props.debtsIOwe.map((record) => {
-    // return <Issue
-    //   amount={record.amount}
-    //   id={record.id}
-    //   navigation={this.props.navigation}
-    //   chooseIssue={this.props.chooseIssue}
-    // />;
+    return <IOweDebt
+      created_at={record.created_at}
+      id={record.id}
+      credit_percentage={record.credit_percentage}
+      current_size={record.current_size}
+      repayDebt={this.props.repayDebt}
+    />;
     });
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Debts I Owe Screen</Text>
-        // {listOfDebts}
+        {listOfDebts}
       </View>
     );
   }
@@ -32,6 +34,7 @@ class OnIssueDebtsScreen extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fetchDebtsIOwe: () => dispatch(fetchDebtsIOwe()),
+  repayDebt: id => dispatch(repayDebt(id)),
 });
 
 const mapStateToProps = state => ({
