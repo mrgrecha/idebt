@@ -70,7 +70,7 @@ class SignUp extends Component {
           />
           <Input
             placeholder="Phone Number"
-            type="phone_number"
+            type="telephone"
             keyboardType="numeric"
             onChangeText={this.onChangeText}
             value={this.state.telephone}
