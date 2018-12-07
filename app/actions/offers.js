@@ -4,7 +4,8 @@ import {
   FETCH_OFFERS,
   CHOOSE_OFFER,
   FETCH_SUITABLE_ISSUES,
-  CREATE_OFFER
+  CREATE_OFFER,
+  CREATE_OFFER_MATCH
 } from '../constants';
 
 export const fetchOffers = () => ({
@@ -32,14 +33,22 @@ export const fetchSuitableIssues = (offerId) => ({
   },
 });
 
-export const createOffer = data => (
-  dispatch => dispatch({
-    type: AJAX,
-    payload: {
-      data,
-      url: 'offers/',
-      method: 'POST',
-      ...CREATE_OFFER,
-    },
-  })
-);
+export const createOffer = (data) => ({
+  type: AJAX,
+  payload: {
+    data,
+    url: 'offers/',
+    method: 'POST',
+    ...CREATE_OFFER,
+  },
+});
+
+export const createOfferMatch = (data) => ({
+  type: AJAX,
+  payload: {
+    data,
+    url: `match/`,
+    method: 'POST',
+    ...CREATE_OFFER_MATCH,
+  },
+});
