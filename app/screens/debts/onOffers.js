@@ -13,7 +13,6 @@ class OnOfferDebtsScreen extends Component {
   }
 
   render() {
-    console.log(this.props.debtsOweMe);
     const listOfDebts= this.props.debtsOweMe.map((record) => {
     return <OweMeDebts
       created_at={record.created_at}

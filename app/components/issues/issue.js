@@ -5,13 +5,13 @@ const Issue = ({amount, id, navigation, chooseIssue}) => {
   return (
     <View>
       <Text>Amount: { amount } || ID: {id}</Text>
-        <Button
-          title="Choose offers"
-          onPress={() => {
-            chooseIssue(id);
-            navigation.navigate('OffersSwiper');
-          }}
-        />
+      <Button
+        title="Choose offers"
+        onPress={() => {
+          chooseIssue(id);
+          navigation.navigate('OffersSwiper');
+        }}
+      />
     </View>
   );
 };
