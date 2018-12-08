@@ -17,27 +17,31 @@ export const fetchUserData = () => (
 );
 
 export const replenishBalance = (userId, amount) => (
-  {
+  dispatch => dispatch({
     type: AJAX,
     payload: {
       url: `user/${userId}/balance/replenish/`,
-      method: 'GET',
+      method: 'POST',
       data: {
-        amount: amount,
+        'amount': amount,
       },
       ...REPLENISH_BALANCE,
    },
- }
-);
+ }).then(() => {
+    dispatch(fetchUserData());
+}));
 
-export const withdrawBalance = (userId, amount) => ({
-  type: AJAX,
-  payload: {
-    url: `user/${userId}/balance/withdraw/`,
-    method: 'GET',
-    data: {
-      amount: amount,
+export const withdrawBalance = (userId, amount) => (
+  dispatch => dispatch({
+    type: AJAX,
+    payload: {
+      url: `user/${userId}/balance/withdraw/`,
+      method: 'POST',
+      data: {
+        'amount': amount,
+      },
+      ...WITHDRAW_BALANCE,
     },
-    ...WITHDRAW_BALANCE,
-  },
-});
+  }).then(() => {
+    dispatch(fetchUserData());
+}));
