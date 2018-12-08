@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { Header, Left, Right } from 'native-base';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { currentUserStatisticsSelector } from '../../selectors/currentUserSelectors';
+import { currentUserDataSelector } from '../../selectors/currentUserSelectors';
 
 export default function (ComposedComponent) {
   class MenuHeader extends Component {
@@ -25,7 +25,7 @@ export default function (ComposedComponent) {
   }
 
   const mapStateToProps = state => ({
-    data: currentUserStatisticsSelector(state),
+    data: currentUserDataSelector(state),
   });
 
   return connect(mapStateToProps)(MenuHeader);

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, View, Text } from 'react-native';
-import { fetchStatistics } from '../actions/currentUser';
+import { fetchUserData } from '../actions/currentUser';
 import { signOut } from '../actions/auth';
 import { currentUserAuthTokenSelector } from '../selectors/currentUserSelectors';
 
 class HomeScreen extends Component {
 
   componentWillMount() {
-    this.props.fetchStatistics();
+    this.props.fetchUserData();
   }
 
   render() {
@@ -34,7 +34,7 @@ class HomeScreen extends Component {
 
 const mapDispatchToProps = dispatch => ({
   logOut: () => dispatch(signOut()),
-  fetchStatistics: () => dispatch(fetchStatistics()),
+  fetchUserData: () => dispatch(fetchUserData()),
 });
 
 const mapStateToProps = state => ({
