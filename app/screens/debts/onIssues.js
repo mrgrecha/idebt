@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
-import Input from '../../components/shared/input';
-import Button from '../../components/shared/button';
-import { debtsIOweSelector } from '../../selectors';
+import { debtsIOweSelector, visibleErrorModal, textInErrorModal } from '../../selectors';
 import { fetchDebtsIOwe, repayDebt } from '../../actions/debts';
 import IOweDebt from '../../components/debts/iOwe.js';
+import ErrorModal from '../../components/modals/errorModal';
+import { closeErrorModal } from '../../actions/ui';
 
 class OnIssueDebtsScreen extends Component {
   componentWillMount() {
@@ -13,19 +13,23 @@ class OnIssueDebtsScreen extends Component {
   }
 
   render() {
-    console.log(this.props.debtsIOwe)
     const listOfDebts= this.props.debtsIOwe.map((record) => {
-    return <IOweDebt
-      created_at={record.created_at}
-      id={record.id}
-      credit_percentage={record.credit_percentage}
-      current_size={record.current_size}
-      repayDebt={this.props.repayDebt}
-    />;
+      return <IOweDebt
+        created_at={record.created_at}
+        id={record.id}
+        credit_percentage={record.credit_percentage}
+        current_size={record.current_size}
+        repayDebt={this.props.repayDebt}
+      />;
     });
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Debts I Owe Screen</Text>
+        <ErrorModal
+          visible={this.props.visibleErrorModal}
+          errorText={this.props.errorText}
+          closeModal={this.props.closeModal}
+        />
         {listOfDebts}
       </View>
     );
@@ -35,10 +39,13 @@ class OnIssueDebtsScreen extends Component {
 const mapDispatchToProps = dispatch => ({
   fetchDebtsIOwe: () => dispatch(fetchDebtsIOwe()),
   repayDebt: id => dispatch(repayDebt(id)),
+  closeModal: () => dispatch(closeErrorModal()),
 });
 
 const mapStateToProps = state => ({
   debtsIOwe: debtsIOweSelector(state),
+  visibleErrorModal: visibleErrorModal(state),
+  errorText: textInErrorModal(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OnIssueDebtsScreen);

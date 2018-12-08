@@ -8,6 +8,7 @@ const asyncActionType = type => ({
 
 // App settings
 export const BASE_API_URL = LOCAL_API_IP;
+
 export const AJAX = 'AJAX';
 export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
 
@@ -32,3 +33,4 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const CHOOSE_OFFER = 'CHOOSE_OFFER';
 export const CHOOSE_ISSUE = 'CHOOSE_ISSUE';
 export const DATA_LOADED = 'DATA_LOADED';
+export const CLOSE_ERROR_MODAL = 'CLOSE_ERROR_MODAL';
