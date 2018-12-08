@@ -4,7 +4,7 @@ import {
   FETCH_DEBTS_OWE_ME,
   REPAY_DEBTS,
 } from '../constants';
-import { fetchStatistics } from './currentUser.js'
+import { fetchUserData } from './currentUser.js'
 
 export const fetchDebtsIOwe = () => ({
   type: AJAX,
@@ -33,5 +33,5 @@ export const repayDebt = (debtId) => (
       ...REPAY_DEBTS,
     },
   }).then(() => {
-    dispatch(fetchStatistics());
+    dispatch(fetchUserData());
 }));

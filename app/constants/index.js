@@ -14,6 +14,7 @@ export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAG
 
 // API requests
 export const FETCH_STATISTICS = asyncActionType('FETCH_STATISTICS');
+export const FETCH_USER_DATA = asyncActionType('FETCH_USER_DATA');
 export const FETCH_OFFERS = asyncActionType('FETCH_OFFERS');
 export const FETCH_ISSUES = asyncActionType('FETCH_ISSUES');
 export const FETCH_SUITABLE_OFFERS = asyncActionType('FETCH_SUITABLE_OFFERS');

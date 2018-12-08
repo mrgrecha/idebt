@@ -11,6 +11,7 @@ import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 import OffersSwiperScreen from '../screens/swipers/offersSwiper';
 import IssuesSwiperScreen from '../screens/swipers/issuesSwiper';
+import ProfileScreen from '../screens/profile';
 import OnOfferDebtsScreen from '../screens/debts/onOffers';
 import OnIssueDebtsScreen from '../screens/debts/onIssues';
 
@@ -86,6 +87,9 @@ export const RootStack = createDrawerNavigator(
     },
     Offers: {
       screen: OffersStackScreen,
+    },
+    Profile: {
+      screen: MenuHeader(ProfileScreen),
     },
     Statistics: {
       screen: MenuHeader(StatisticsScreen),
