@@ -28,6 +28,8 @@ export const CREATE_OFFER = asyncActionType('CREATE_OFFER')
 export const CREATE_OFFER_MATCH = asyncActionType('CREATE_OFFER_MATCH')
 export const CREATE_ISSUE_MATCH = asyncActionType('CREATE_ISSUE_MATCH')
 export const SIGN_IN = asyncActionType('SIGN_IN');
+export const REPLENISH_BALANCE = asyncActionType('REPLENISH_BALANCE');
+export const WITHDRAW_BALANCE = asyncActionType('WITHDRAW_BALANCE');
 
 // App constants
 export const SIGN_OUT = 'SIGN_OUT';

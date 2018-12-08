@@ -14,7 +14,31 @@ import IssuesSwiperScreen from '../screens/swipers/issuesSwiper';
 import ProfileScreen from '../screens/profile';
 import OnOfferDebtsScreen from '../screens/debts/onOffers';
 import OnIssueDebtsScreen from '../screens/debts/onIssues';
+import SettingsScreen from '../screens/settings';
+import ChangeBalanceScreen from '../screens/settings/changeBalance';
+import CreditCardScreen from '../screens/settings/creditCard';
+import GeneralInformationScreen from '../screens/settings/generalInformation';
+import passwordScreen from '../screens/settings/passwordScreen';
 
+export const SettingsStackScreen = createStackNavigator(
+  {
+    Settings: {
+      screen: MenuHeader(SettingsScreen),
+    },
+    ChangeBalance: {
+      screen: ChangeBalanceScreen
+    },
+    CreditCard: {
+      screen: CreditCardScreen
+    },
+    GeneralInformation: {
+      screen: GeneralInformationScreen
+    },
+    Password: {
+      screen: passwordScreen
+    }
+  },
+);
 
 export const OffersStackScreen = createStackNavigator(
   {
@@ -25,9 +49,6 @@ export const OffersStackScreen = createStackNavigator(
       screen: IssuesSwiperScreen
     }
   },
-  {
-    headerMode: 'none',
-  }
 );
 
 export const IssuesStackScreen = createStackNavigator(
@@ -39,9 +60,6 @@ export const IssuesStackScreen = createStackNavigator(
       screen: OffersSwiperScreen
     }
   },
-  {
-    headerMode: 'none',
-  }
 );
 
 export const MainScreen = createStackNavigator(
@@ -93,6 +111,9 @@ export const RootStack = createDrawerNavigator(
     },
     Statistics: {
       screen: MenuHeader(StatisticsScreen),
+    },
+    Settings: {
+      screen: SettingsStackScreen,
     },
   },
 );
