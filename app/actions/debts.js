@@ -3,8 +3,6 @@ import {
   FETCH_DEBTS_I_OWE,
   FETCH_DEBTS_OWE_ME,
   REPAY_DEBTS,
-  SHOW_DEBTS_ERROR_MODAL,
-  CLOSE_DEBTS_ERROR_MODAL,
 } from '../constants';
 import { fetchStatistics } from './currentUser.js'
 
@@ -37,11 +35,3 @@ export const repayDebt = (debtId) => (
   }).then(() => {
     dispatch(fetchStatistics());
 }));
-
-export const showDebtsErrorModal = () => ({
-  type: SHOW_DEBTS_ERROR_MODAL,
-});
-
-export const closeDebtsErrorModal = () => ({
-  type: CLOSE_DEBTS_ERROR_MODAL,
-});

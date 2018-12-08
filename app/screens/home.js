@@ -4,7 +4,6 @@ import { Button, View, Text } from 'react-native';
 import { fetchStatistics } from '../actions/currentUser';
 import { signOut } from '../actions/auth';
 import { currentUserAuthTokenSelector } from '../selectors/currentUserSelectors';
-import ErrorModal from '../components/debts/errorModal';
 
 class HomeScreen extends Component {
 
@@ -15,7 +14,6 @@ class HomeScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <ErrorModal/>
         <Text>Home Screen</Text>
         <Button
           title="Issue"
