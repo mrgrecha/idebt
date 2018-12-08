@@ -16,6 +16,7 @@
     "native-base": "^2.8.1",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+    "react-native-chart-kit": "^1.2.1",
     "react-native-credit-card-input": "^0.4.1",
     "react-native-deck-swiper": "^1.5.26",
     "react-native-elements": "^0.19.1",
@@ -29,6 +30,7 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.2",
     "redux-thunk": "^2.3.0",
+    "rn-slider-switch": "^0.0.3",
     "yarn": "^1.12.3"
   },
   "devDependencies": {
