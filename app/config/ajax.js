@@ -18,8 +18,9 @@ const ajax = ({ dispatch }) => next => (action) => {
   const token = store.getState().currentUser.authToken;
 
   const handleError = (error) => {
-    console.log('Error data: ', error.data);
+    console.log('Error: ', error);
     dispatch({ type: payload.ERROR, payload: error.data });
+    throw error;
   };
 
   const handleSuccess = (response) => {
