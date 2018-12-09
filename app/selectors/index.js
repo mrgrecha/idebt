@@ -4,3 +4,4 @@ export * from './issuesSelectors';
 export * from './offersSelectors';
 export * from './debtsSelectors';
 export * from './uiSelectors';
+export * from './statisticsSelectors';

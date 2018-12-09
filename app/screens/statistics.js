@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
+import { Text, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import {
   LineChart,
-  BarChart,
   PieChart,
-  ProgressChart,
-  ContributionGraph
 } from 'react-native-chart-kit'
 import { Dimensions } from 'react-native'
+import { fetchUserStatistics } from '../actions/statistics';
+import { statisticsSelector, statisticsIsLoadedSelector } from '../selectors/statisticsSelectors';
+import { currentUserIdSelector } from '../selectors/currentUserSelectors';
+import Colors from '../constants/colors';
+import SpinnerScreen from './spinner';
 
 class StatisticsScreen extends Component {
+  componentWillMount() {
+    this.props.fetchUserStatistics(this.props.currentUserId);
+  }
 
   render() {
-    const tempData = [0.4, 0.6, 0.8];
+    const { debts, summaries, finance } = this.props.data;
+    const ratings = []
+    for (i in summaries) {
+      ratings.push(summaries[i].rating);
+    }
     const screenWidth = Dimensions.get('window').width;
     const chartConfig = {
       backgroundColor: '#e26a00',
@@ -25,58 +34,51 @@ class StatisticsScreen extends Component {
         borderRadius: 16
       }
     };
-    return (
-      <ScrollView>
-        <Text>
-          Statistics
-        </Text>
-        <LineChart
-          data={{
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [{
-              data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100
-              ]
-            }]
-          }}
-          width={screenWidth} // from react-native
-          height={220}
-          chartConfig={chartConfig}
-        />
-        <ProgressChart
-          data={tempData}
-          width={screenWidth}
-          height={220}
-          chartConfig={chartConfig}
-        />
-
-        <PieChart
-          data={[
-            { name: 'Paid Debts', count: 215, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-            { name: 'Not paid debts', count: 28, color: '#F00', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-          ]}
-          width={screenWidth}
-          height={220}
-          chartConfig={chartConfig}
-          accessor="count"
-          backgroundColor="transparent"
-          paddingLeft="15"
-        />
-      </ScrollView>
-    );
+    if (!this.props.isLoaded) {
+      return ( <SpinnerScreen /> )
+    }
+    else {
+      return (
+        <ScrollView>
+          <Text>Statistics</Text>
+          <LineChart
+            data={{
+              labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+              datasets: [{
+                data: ratings
+              }]
+            }}
+            width={screenWidth} // from react-native
+            height={220}
+            chartConfig={chartConfig}
+            bezier
+          />
+          <PieChart
+            data={[
+              { name: 'Paid Debts', count: debts.closed, color: Colors.lightGray2, legendFontColor: '#7F7F7F', legendFontSize: 10 },
+              { name: 'Not paid debts', count: debts.pending, color: Colors.gray, legendFontColor: '#7F7F7F', legendFontSize: 10 },
+            ]}
+            width={screenWidth}
+            height={220}
+            chartConfig={chartConfig}
+            accessor="count"
+            backgroundColor="transparent"
+            paddingLeft="15"
+          />
+        </ScrollView>
+      );
+    }
   }
 }
 
 
 const mapDispatchToProps = dispatch => ({
+  fetchUserStatistics: (userId) => dispatch(fetchUserStatistics(userId)),
 });
 
 const mapStateToProps = state => ({
+  data: statisticsSelector(state),
+  currentUserId: currentUserIdSelector(state),
+  isLoaded: statisticsIsLoadedSelector(state),
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(StatisticsScreen);
