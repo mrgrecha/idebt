@@ -23,8 +23,7 @@ class OnIssueDebtsScreen extends Component {
       />;
     });
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Debts I Owe Screen</Text>
+      <View style={{ flex: 1 }}>
         <ErrorModal
           visible={this.props.visibleErrorModal}
           errorText={this.props.errorText}
