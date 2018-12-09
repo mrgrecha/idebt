@@ -7,7 +7,7 @@ const asyncActionType = type => ({
 });
 
 // App settings
-export const BASE_API_URL = 'http://192.168.0.106:8000/';
+export const BASE_API_URL = LOCAL_API_IP;
 
 export const AJAX = 'AJAX';
 export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
