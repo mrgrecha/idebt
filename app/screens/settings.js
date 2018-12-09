@@ -8,6 +8,7 @@ import Colors from '../constants/colors';
 import BaseIcon from '../components/settings/icon';
 import Chevron from '../components/settings/chevron';
 import InfoText from  '../components/settings/infoText';
+import { signOut } from '../actions/auth';
 
 const styles = StyleSheet.create({
   scroll: {
@@ -183,11 +184,6 @@ class SettingsScreen extends Component {
             title="Rate Us"
             onPress={() => this.onPressOptions()}
             containerStyle={styles.listItemContainer}
-            badge={{
-              value: 5,
-              textStyle: { color: 'white' },
-              containerStyle: { backgroundColor: 'gray', marginTop: 0 },
-            }}
             leftIcon={
               <BaseIcon
                 containerStyle={{
@@ -219,7 +215,7 @@ class SettingsScreen extends Component {
             rightIcon={<Chevron />}
           />
           <Button
-            onPress={() => this.props.navigation.navigate('GeneralInformation')}
+            onPress={() => this.props.logOut()}
             title="Log out"
           />
         </View>
@@ -230,6 +226,7 @@ class SettingsScreen extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fetchUserData: () => dispatch(fetchUserData()),
+  logOut: () => dispatch(signOut()),
 });
 
 const mapStateToProps = state => ({

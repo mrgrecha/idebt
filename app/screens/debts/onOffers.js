@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet } from 'react-native';
 import { debtsOweMeSelector } from '../../selectors';
 import { fetchDebtsOweMe } from '../../actions/debts';
 import OweMeDebts from '../../components/debts/oweMe.js';
-import ErrorModal from '../../components/modals/errorModal';
 
 class OnOfferDebtsScreen extends Component {
  componentWillMount() {
@@ -14,6 +13,7 @@ class OnOfferDebtsScreen extends Component {
   render() {
     const listOfDebts= this.props.debtsOweMe.map((record) => {
       return <OweMeDebts
+        key={record.id}
         created_at={record.created_at}
         id={record.id}
         credit_percentage={record.credit_percentage}
@@ -21,11 +21,10 @@ class OnOfferDebtsScreen extends Component {
       />;
     });
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <ScrollView>
         <Text>Debts Owe ME Screen</Text>
-        <ErrorModal/>
         {listOfDebts}
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { fetchOffers, chooseOffer } from '../actions/offers';
 import Offer from '../components/offers/offer';
 import { offersSelector } from '../selectors';
@@ -14,6 +14,7 @@ class OffersScreen extends Component {
   render() {
     const listOfOffers = this.props.offers.map((record) => {
       return <Offer
+        key={record.id}
         creditFund={record.credit_fund}
         id={record.id}
         navigation={this.props.navigation}
@@ -21,10 +22,9 @@ class OffersScreen extends Component {
       />;
     });
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Offers Screen</Text>
+      <ScrollView>
         {listOfOffers}
-      </View>
+      </ScrollView>
     );
   }
 }

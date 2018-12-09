@@ -7,14 +7,7 @@ const ACTION_HANDLERS = {
 
 const initialState = {
   isLoaded: false,
-  statistics: {
-    debts: {
-      closed: 0,
-      pending: 0,
-    },
-    summaries: [],
-
-  },
+  statistics: {},
 };
 
 export default function statisticsReducer(state = initialState, action) {
