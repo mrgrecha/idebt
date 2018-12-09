@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Avatar } from 'react-native-elements'
 import { DrawerItems } from 'react-navigation';
 import { currentUserDataSelector } from '../../selectors/currentUserSelectors';
+import Colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   scroll: {
@@ -26,10 +27,10 @@ const styles = StyleSheet.create({
     borderColor: '#ECECEC',
   },
   background:{
-        backgroundColor: '#f50057',
-        height: 140,
-        alignItems: 'center',
-        justifyContent: 'center',
+    backgroundColor: Colors.gray,
+    height: 140,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })
 
@@ -47,13 +48,12 @@ DrawerContent = (props) => (
           }}
         />
       </View>
-      <View styles={styles.userRow} > 
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
+      <View styles={styles.userRow} >
+        <Text style={{ fontSize: 16, }}>
           {props.data.first_name} {props.data.last_name}
+        </Text>
+        <Text style={{ fontSize: 14, justifyContent: 'center' }}>
+          Rating: {props.data.rating} %
         </Text>
       </View>
     </View>

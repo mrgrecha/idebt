@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet } from 'react-native';
 import { debtsIOweSelector, visibleErrorModal, textInErrorModal } from '../../selectors';
 import { fetchDebtsIOwe, repayDebt } from '../../actions/debts';
 import IOweDebt from '../../components/debts/iOwe.js';
@@ -15,6 +15,7 @@ class OnIssueDebtsScreen extends Component {
   render() {
     const listOfDebts= this.props.debtsIOwe.map((record) => {
       return <IOweDebt
+        key={record.id}
         created_at={record.created_at}
         id={record.id}
         credit_percentage={record.credit_percentage}
@@ -23,14 +24,14 @@ class OnIssueDebtsScreen extends Component {
       />;
     });
     return (
-      <View style={{ flex: 1 }}>
+      <ScrollView>
         <ErrorModal
           visible={this.props.visibleErrorModal}
           errorText={this.props.errorText}
           closeModal={this.props.closeModal}
         />
         {listOfDebts}
-      </View>
+      </ScrollView>
     );
   }
 }
