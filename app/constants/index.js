@@ -7,7 +7,7 @@ const asyncActionType = type => ({
 });
 
 // App settings
-export const BASE_API_URL = LOCAL_API_IP;
+export const BASE_API_URL = 'http://192.168.0.106:8000/';
 
 export const AJAX = 'AJAX';
 export const INITALIZE_WITH_DATA_FROM_STORAGE = 'INITALIZE_WITH_DATA_FROM_STORAGE';
@@ -30,6 +30,8 @@ export const CREATE_ISSUE_MATCH = asyncActionType('CREATE_ISSUE_MATCH')
 export const SIGN_IN = asyncActionType('SIGN_IN');
 export const REPLENISH_BALANCE = asyncActionType('REPLENISH_BALANCE');
 export const WITHDRAW_BALANCE = asyncActionType('WITHDRAW_BALANCE');
+export const UPDATE_PASSWORD = asyncActionType('UPDATE_PASSWORD');
+
 
 // App constants
 export const SIGN_OUT = 'SIGN_OUT';

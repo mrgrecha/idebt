@@ -3,6 +3,7 @@ import {
   AJAX,
   REPLENISH_BALANCE,
   WITHDRAW_BALANCE,
+  UPDATE_PASSWORD,
 } from '../constants';
 
 export const fetchUserData = () => (
@@ -45,3 +46,13 @@ export const withdrawBalance = (userId, amount) => (
   }).then(() => {
     dispatch(fetchUserData());
 }));
+
+export const updatePassword = (userId, data) => ({
+  type: AJAX,
+  payload: {
+    url: `user/${userId}/set_password/`,
+    method: 'POST',
+    data: data,
+    ...UPDATE_PASSWORD,
+  },
+});
