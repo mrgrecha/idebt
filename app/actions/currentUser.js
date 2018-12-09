@@ -3,6 +3,7 @@ import {
   AJAX,
   REPLENISH_BALANCE,
   WITHDRAW_BALANCE,
+  UPDATE_USER_DATA,
 } from '../constants';
 
 export const fetchUserData = () => (
@@ -15,6 +16,16 @@ export const fetchUserData = () => (
     },
   }
 );
+
+export const updateUserData = (data) => ({
+  type: AJAX,
+  payload: {
+    data,
+    url: `user/${data.id}/`,
+    method: 'PATCH',
+    ...UPDATE_USER_DATA,
+  },
+});
 
 export const replenishBalance = (userId, amount) => (
   dispatch => dispatch({
