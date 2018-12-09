@@ -1,4 +1,4 @@
-import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
 import HomeScreen from '../screens/home';
 import IssuesScreen from '../screens/issues';
 import HistoryScreen from '../screens/history';
@@ -19,6 +19,7 @@ import ChangeBalanceScreen from '../screens/settings/changeBalance';
 import CreditCardScreen from '../screens/settings/creditCard';
 import GeneralInformationScreen from '../screens/settings/generalInformation';
 import passwordScreen from '../screens/settings/passwordScreen';
+import DrawerContent from '../components/HOC/customDrawer';
 
 export const SettingsStackScreen = createStackNavigator(
   {
@@ -116,6 +117,9 @@ export const RootStack = createDrawerNavigator(
       screen: SettingsStackScreen,
     },
   },
+  {
+    contentComponent: DrawerContent,
+  }
 );
 
 

@@ -30,6 +30,7 @@ export const CREATE_ISSUE_MATCH = asyncActionType('CREATE_ISSUE_MATCH')
 export const SIGN_IN = asyncActionType('SIGN_IN');
 export const REPLENISH_BALANCE = asyncActionType('REPLENISH_BALANCE');
 export const WITHDRAW_BALANCE = asyncActionType('WITHDRAW_BALANCE');
+export const UPDATE_PASSWORD = asyncActionType('UPDATE_PASSWORD');
 export const UPDATE_USER_DATA = asyncActionType('UPDATE_USER_DATA');
 
 // App constants
