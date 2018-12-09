@@ -1,7 +1,6 @@
 import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
 import HomeScreen from '../screens/home';
 import IssuesScreen from '../screens/issues';
-import HistoryScreen from '../screens/history';
 import OffersScreen from '../screens/offers';
 import StatisticsScreen from '../screens/statistics';
 import MenuHeader from '../components/HOC/menuHeader';
@@ -11,7 +10,6 @@ import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 import OffersSwiperScreen from '../screens/swipers/offersSwiper';
 import IssuesSwiperScreen from '../screens/swipers/issuesSwiper';
-import ProfileScreen from '../screens/profile';
 import OnOfferDebtsScreen from '../screens/debts/onOffers';
 import OnIssueDebtsScreen from '../screens/debts/onIssues';
 import SettingsScreen from '../screens/settings';
@@ -101,14 +99,8 @@ export const RootStack = createDrawerNavigator(
     Debts: {
       screen: DebtsTabs,
     },
-    History: {
-      screen: MenuHeader(HistoryScreen),
-    },
     Offers: {
       screen: OffersStackScreen,
-    },
-    Profile: {
-      screen: MenuHeader(ProfileScreen),
     },
     Statistics: {
       screen: MenuHeader(StatisticsScreen),

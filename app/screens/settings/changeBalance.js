@@ -5,7 +5,6 @@ import Button from '../../components/shared/button';
 import { connect } from 'react-redux';
 import { replenishBalance, withdrawBalance } from '../../actions/currentUser';
 import { currentUserIdSelector } from '../../selectors/currentUserSelectors';
-import MultiSwitch from '../../components/shared/multi_switch/multiSwitch';
 
 class ChangeBalanceScreen extends Component {
   state = {
