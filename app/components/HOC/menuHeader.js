@@ -12,7 +12,7 @@ export default function (ComposedComponent) {
         <View style={{ flex: 1 }}>
           <Header>
             <Left>
-              <Icon  name='reorder' style={{ justifyContent: 'center' }} onPress={()=>this.props.navigation.openDrawer()} />
+              <Icon name='reorder' style={{ justifyContent: 'center' }} onPress={()=>this.props.navigation.openDrawer()} />
             </Left>
             <Right>
               <Text>$ {this.props.data && this.props.data.balance}</Text>

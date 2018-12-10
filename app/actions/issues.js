@@ -22,7 +22,7 @@ export const fetchIssues = () => (
 export const fetchSuitableOffers = (issueId) => ({
   type: AJAX,
   payload: {
-    url: `issues/${issueId}/suitable`,
+    url: `issues/${issueId}/suitable/`,
     method: 'GET',
     ...FETCH_SUITABLE_OFFERS,
   },

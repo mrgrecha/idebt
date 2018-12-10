@@ -47,76 +47,76 @@ class IssuesSwiperScreen extends Component {
     if (this.props.suitableIssues == null) {
       return ( <SpinnerScreen /> )
     }
-  else if (this.props.suitableIssues.length == 0) {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text> You haven't got any suitable issues</Text>
-      </View>
-    )
-  }
-  else {
-    return (
-      <View style={styles.container}>
-        <Swiper
-          ref={swiper => {
-            this.swiper = swiper
-          }}
-          onSwipedLeft={(index) => this.swipeLeft(index)}
-          onSwipedRight={(index) => this.swipeRight(index)}
-          onTapCard={this.tapCard()}
-          cards={this.props.suitableIssues}
-          cardVerticalMargin={80}
-          renderCard={this.renderCard}
-          onSwipedAll={this.onSwipedAllCards}
-          stackSize={3}
-          stackSeparation={15}
-          overlayLabels={{
-            left: {
-              title: 'NOPE',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'flex-end',
-                  justifyContent: 'flex-start',
-                  marginTop: 30,
-                  marginLeft: -30
+    else if (this.props.suitableIssues.length == 0) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text> You haven't got any suitable issues</Text>
+        </View>
+      )
+    }
+    else {
+      return (
+        <View style={styles.container}>
+          <Swiper
+            ref={swiper => {
+              this.swiper = swiper
+            }}
+            onSwipedLeft={(index) => this.swipeLeft(index)}
+            onSwipedRight={(index) => this.swipeRight(index)}
+            onTapCard={this.tapCard()}
+            cards={this.props.suitableIssues}
+            cardVerticalMargin={80}
+            renderCard={this.renderCard}
+            onSwipedAll={this.onSwipedAllCards}
+            stackSize={3}
+            stackSeparation={15}
+            overlayLabels={{
+              left: {
+                title: 'NOPE',
+                style: {
+                  label: {
+                    backgroundColor: 'black',
+                    borderColor: 'black',
+                    color: 'white',
+                    borderWidth: 1
+                  },
+                  wrapper: {
+                    flexDirection: 'column',
+                    alignItems: 'flex-end',
+                    justifyContent: 'flex-start',
+                    marginTop: 30,
+                    marginLeft: -30
+                  }
                 }
-              }
-            },
-            right: {
-              title: 'Yup',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'flex-start',
-                  marginTop: 30,
-                  marginLeft: 30
+              },
+              right: {
+                title: 'Yup',
+                style: {
+                  label: {
+                    backgroundColor: 'black',
+                    borderColor: 'black',
+                    color: 'white',
+                    borderWidth: 1
+                  },
+                  wrapper: {
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start',
+                    marginTop: 30,
+                    marginLeft: 30
+                  }
                 }
-              }
-            },
-          }}
-          animateOverlayLabelsOpacity
-          animateCardOpacity
-          swipeBackCard
-        >
-          <Button onPress={() => this.swiper.swipeBack()} title='Swipe Back' />
-        </Swiper>
-      </View>
-    )}
-  }
+              },
+            }}
+            animateOverlayLabelsOpacity
+            animateCardOpacity
+            swipeBackCard
+          >
+            <Button onPress={() => this.swiper.swipeBack()} title='Swipe Back' />
+          </Swiper>
+        </View>
+      )}
+    }
 }
 
 const styles = StyleSheet.create({

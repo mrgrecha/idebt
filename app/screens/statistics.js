@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
+import { Text, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import {
   LineChart,
-  BarChart,
   PieChart,
-  ProgressChart,
-  ContributionGraph
+  BarChart,
 } from 'react-native-chart-kit'
 import { Dimensions } from 'react-native'
+import { fetchUserStatistics } from '../actions/statistics';
+import { statisticsSelector, statisticsIsLoadedSelector } from '../selectors/statisticsSelectors';
+import { currentUserIdSelector } from '../selectors/currentUserSelectors';
+import Colors from '../constants/colors';
+import SpinnerScreen from './spinner';
+import { isEmpty } from 'underscore';
 
 class StatisticsScreen extends Component {
+  componentWillMount() {
+    this.props.fetchUserStatistics(this.props.currentUserId);
+  }
 
   render() {
-    const tempData = [0.4, 0.6, 0.8];
+    const { debts, summaries, finance } = this.props.data;
+    const ratings = [];
+    for (i in summaries) {
+      ratings.push(summaries[i].rating);
+    }
     const screenWidth = Dimensions.get('window').width;
     const chartConfig = {
       backgroundColor: '#e26a00',
@@ -25,58 +36,70 @@ class StatisticsScreen extends Component {
         borderRadius: 16
       }
     };
-    return (
-      <ScrollView>
-        <Text>
-          Statistics
-        </Text>
-        <LineChart
-          data={{
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [{
-              data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100
-              ]
-            }]
-          }}
-          width={screenWidth} // from react-native
-          height={220}
-          chartConfig={chartConfig}
-        />
-        <ProgressChart
-          data={tempData}
-          width={screenWidth}
-          height={220}
-          chartConfig={chartConfig}
-        />
-
+    let pieChartForDebts = null;
+    if (isEmpty(debts) || debts === undefined) {
+      pieChartForDebts = (<Text> You haven't got any debts </Text>);
+    } else {
+      pieChartForDebts = (<View>
+        <Text> Your debts </Text>
         <PieChart
           data={[
-            { name: 'Paid Debts', count: 215, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-            { name: 'Not paid debts', count: 28, color: '#F00', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+            { name: 'Paid Debts', count: debts.closed, color: Colors.lightGray2, legendFontColor: '#7F7F7F', legendFontSize: 10 },
+            { name: 'Not paid debts', count: debts.pending, color: Colors.gray, legendFontColor: '#7F7F7F', legendFontSize: 10 },
           ]}
           width={screenWidth}
           height={220}
           chartConfig={chartConfig}
-          accessor="count"
-          backgroundColor="transparent"
-          paddingLeft="15"
         />
-      </ScrollView>
-    );
+      </View>);
+      }
+
+    if (!this.props.isLoaded) {
+      return ( <SpinnerScreen /> )
+    }
+    else {
+      return (
+        <ScrollView>
+          <Text> Your rating </Text>
+            <LineChart
+              data={{
+                labels: ['07', '08', '09', '10', '11', '12'],
+                datasets: [{
+                  data: ratings
+                }]
+              }}
+              width={screenWidth} // from react-native
+              height={400}
+              chartConfig={chartConfig}
+              bezier
+            />
+            <Text> Your income and debts </Text>
+            <BarChart
+              data={{
+                labels: ["Last month +", 'Last month -', 'All time +', 'All time -'],
+                datasets: [{
+                  data: [finance.active_last_month.income, finance.active_last_month.total_debt, finance.all_time.income, finance.all_time.total_debt]
+                }]
+              }}
+              width={screenWidth}
+              height={400}
+              chartConfig={chartConfig}
+            />
+            {pieChartForDebts}
+        </ScrollView>
+      );
+    }
   }
 }
 
 
 const mapDispatchToProps = dispatch => ({
+  fetchUserStatistics: (userId) => dispatch(fetchUserStatistics(userId)),
 });
 
 const mapStateToProps = state => ({
+  data: statisticsSelector(state),
+  currentUserId: currentUserIdSelector(state),
+  isLoaded: statisticsIsLoadedSelector(state),
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(StatisticsScreen);

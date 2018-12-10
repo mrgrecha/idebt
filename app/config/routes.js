@@ -1,7 +1,6 @@
-import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
+import { createBottomTabNavigator, createDrawerNavigator, createStackNavigator, DrawerItems} from 'react-navigation';
 import HomeScreen from '../screens/home';
 import IssuesScreen from '../screens/issues';
-import HistoryScreen from '../screens/history';
 import OffersScreen from '../screens/offers';
 import StatisticsScreen from '../screens/statistics';
 import MenuHeader from '../components/HOC/menuHeader';
@@ -11,7 +10,6 @@ import signInScreen from '../screens/auth/signIn';
 import signUpScreen from '../screens/auth/signUp';
 import OffersSwiperScreen from '../screens/swipers/offersSwiper';
 import IssuesSwiperScreen from '../screens/swipers/issuesSwiper';
-import ProfileScreen from '../screens/profile';
 import OnOfferDebtsScreen from '../screens/debts/onOffers';
 import OnIssueDebtsScreen from '../screens/debts/onIssues';
 import SettingsScreen from '../screens/settings';
@@ -20,11 +18,14 @@ import CreditCardScreen from '../screens/settings/creditCard';
 import GeneralInformationScreen from '../screens/settings/generalInformation';
 import passwordScreen from '../screens/settings/passwordScreen';
 import DrawerContent from '../components/HOC/customDrawer';
+import { Icon } from 'react-native-elements';
+import React, { Component } from 'react';
 
 export const SettingsStackScreen = createStackNavigator(
   {
     Settings: {
       screen: MenuHeader(SettingsScreen),
+      title: 'Settings'
     },
     ChangeBalance: {
       screen: ChangeBalanceScreen
@@ -39,6 +40,9 @@ export const SettingsStackScreen = createStackNavigator(
       screen: passwordScreen
     }
   },
+  {
+    headerMode: 'none'
+  }
 );
 
 export const OffersStackScreen = createStackNavigator(
@@ -50,6 +54,9 @@ export const OffersStackScreen = createStackNavigator(
       screen: IssuesSwiperScreen
     }
   },
+  {
+    headerMode: 'none'
+  }
 );
 
 export const IssuesStackScreen = createStackNavigator(
@@ -61,6 +68,9 @@ export const IssuesStackScreen = createStackNavigator(
       screen: OffersSwiperScreen
     }
   },
+  {
+    headerMode: 'none'
+  }
 );
 
 export const MainScreen = createStackNavigator(
@@ -94,27 +104,51 @@ export const RootStack = createDrawerNavigator(
   {
     Home: {
       screen: MainScreen,
+      navigationOptions: {
+        drawerIcon: () => (
+          <Icon name='home'/>
+        ),
+      }
     },
     Issues: {
       screen: IssuesStackScreen,
+      navigationOptions: {
+        drawerIcon: () => (
+          <Icon type='font-awesome' name='support'/>
+        ),
+      }
     },
     Debts: {
       screen: DebtsTabs,
-    },
-    History: {
-      screen: MenuHeader(HistoryScreen),
+      navigationOptions: {
+        drawerIcon: () => (
+          <Icon type='font-awesome' name='money'/>
+        ),
+      }
     },
     Offers: {
       screen: OffersStackScreen,
-    },
-    Profile: {
-      screen: MenuHeader(ProfileScreen),
+      navigationOptions: {
+        drawerIcon: () => (
+          <Icon type='font-awesome' name='handshake-o'/>
+        ),
+      }
     },
     Statistics: {
       screen: MenuHeader(StatisticsScreen),
+      navigationOptions: {
+        drawerIcon: () => (
+          <Icon type='font-awesome' name='bar-chart'/>
+        ),
+      }
     },
     Settings: {
       screen: SettingsStackScreen,
+      navigationOptions: {
+        drawerIcon: () => (
+          <Icon name='settings'/>
+        ),
+      }
     },
   },
   {
