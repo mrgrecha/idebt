@@ -68,11 +68,11 @@ class PasswordScreen extends Component {
 
 
 const mapDispatchToProps = dispatch => ({
-  updatePassword: (userId, password) => dispatch(updatePassword(userId, password)),
+	updatePassword: (userId, password) => dispatch(updatePassword(userId, password)),
 });
 
 const mapStateToProps = state => ({
-  userId: currentUserIdSelector(state),
+	userId: currentUserIdSelector(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PasswordScreen);

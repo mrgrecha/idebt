@@ -1,18 +1,20 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
+import { ListItem } from 'react-native-elements'
 
-const Issue = ({amount, id, navigation, chooseIssue}) => {
+
+const Issue = ({amount, maxOverpay, minCreditPeriod, id, navigation, chooseIssue}) => {
   return (
-    <View>
-      <Text>Amount: { amount } || ID: {id}</Text>
-      <Button
-        title="Choose offers"
-        onPress={() => {
-          chooseIssue(id);
-          navigation.navigate('OffersSwiper');
-        }}
-      />
-    </View>
+   <ListItem
+      key={amount}
+      title={`Maximal Overpay ${maxOverpay}`}
+      subtitle={`Minimal Credit Period ${minCreditPeriod} \nAmount ${amount}`}
+      subtitleNumberOfLines={2}
+      leftIcon={{name: 'av-timer'}}
+      onPress={() => {
+        chooseIssue(id);
+        navigation.navigate('OffersSwiper');}}
+    />
   );
 };
 

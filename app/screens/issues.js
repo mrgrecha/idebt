@@ -16,6 +16,8 @@ class IssuesScreen extends Component {
       return <Issue
         key={record.id}
         amount={record.amount}
+        maxOverpay={record.max_overpay}
+        minCreditPeriod={record.min_credit_period}
         id={record.id}
         navigation={this.props.navigation}
         chooseIssue={this.props.chooseIssue}
