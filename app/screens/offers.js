@@ -16,6 +16,8 @@ class OffersScreen extends Component {
       return <Offer
         key={record.id}
         creditFund={record.credit_fund}
+        creditPercentage={record.credit_percentage}
+        returnPeriod={record.return_period}
         id={record.id}
         navigation={this.props.navigation}
         chooseOffer={this.props.chooseOffer}
