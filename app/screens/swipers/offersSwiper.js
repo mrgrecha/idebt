@@ -7,6 +7,7 @@ import { fetchSuitableOffers } from '../../actions/issues';
 import { createOfferMatch } from '../../actions/offers';
 import SpinnerScreen from '../spinner';
 import { currentIssueIdSelector, suitableOffersSelector } from '../../selectors';
+import colors from '../../constants/colors';
 
 class OffersSwiperScreen extends Component {
 
@@ -56,7 +57,7 @@ class OffersSwiperScreen extends Component {
     }
     else {
       return (
-        <View style={styles.container}>
+        <View>
           <Swiper
             ref={swiper => {
               this.swiper = swiper
@@ -65,18 +66,18 @@ class OffersSwiperScreen extends Component {
             onSwipedRight={(index) => this.swipeRight(index)}
             onTapCard={this.tapCard()}
             cards={this.props.suitableOffers}
-            cardVerticalMargin={80}
+            cardVerticalMargin={100}
             renderCard={this.renderCard}
             onSwipedAll={this.onSwipedAllCards}
             stackSize={3}
             stackSeparation={15}
             overlayLabels={{
               left: {
-                title: 'NOPE',
+                title: 'No',
                 style: {
                   label: {
-                    backgroundColor: 'black',
-                    borderColor: 'black',
+                    backgroundColor: 'red',
+                    borderColor: 'red',
                     color: 'white',
                     borderWidth: 1
                   },
@@ -90,11 +91,11 @@ class OffersSwiperScreen extends Component {
                 }
               },
               right: {
-                title: 'Yup',
+                title: 'Like',
                 style: {
                   label: {
-                    backgroundColor: 'black',
-                    borderColor: 'black',
+                    backgroundColor: 'green',
+                    borderColor: 'green',
                     color: 'white',
                     borderWidth: 1
                   },
@@ -119,12 +120,6 @@ class OffersSwiperScreen extends Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  }
-})
 
 const mapDispatchToProps = dispatch => ({
   fetchSuitableOffers: (issueId) => dispatch(fetchSuitableOffers(issueId)),
