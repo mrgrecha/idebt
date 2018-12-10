@@ -1,27 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Button } from 'react-native';
+import { Card, ListItem } from 'react-native-elements';
 
 export default OfferCard = ({offer}) => {
   return (
-    <View style={styles.card}>
-      <Text style={styles.text}>Credit fund: { offer.credit_fund }</Text>
-      <Text style={styles.text}>Id: { offer.id }</Text>
-      <Text style={styles.text}>Credit percentage: { offer.credit_percentage }</Text>
-    </View>
+    <Card
+      title='Offer'>
+      <ListItem key={offer.credit_fund} title='Credit fund' rightTitle={`${offer.credit_fund} $`} hideChevron/>
+      <ListItem key={offer.return_period} title='Days to return' rightTitle={offer.return_period} hideChevron/>
+      <ListItem key={offer.grace_period} title='Grace perion' rightTitle={offer.grace_period} hideChevron/>
+      <ListItem key={offer.max_loan_size} title='Percentage' rightTitle={`${offer.credit_percentage * 100} %`} hideChevron/>
+      <Button title='More information' />
+    </Card>
   );
 };
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: '#E8E8E8',
-    justifyContent: 'center',
-    backgroundColor: 'white'
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 50,
-    backgroundColor: 'transparent'
-  },
-});
