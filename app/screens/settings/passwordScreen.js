@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-	 userId: currentUserIdSelector(state),
+	userId: currentUserIdSelector(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PasswordScreen);
