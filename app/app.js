@@ -11,8 +11,8 @@ class App extends React.Component {
   }
 
   render() {
+    console.disableYellowBox = true;
     if (this.props.isLoaded) {
-      // TO DO Investigate why we cannot do it like const navigator = this.props.isLogged ? <RootStack/> : <AuthTabs/>
       if (this.props.authToken) {
         return (<RootStack />);
       }

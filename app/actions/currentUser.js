@@ -36,6 +36,7 @@ export const replenishBalance = (userId, amount) => (
       method: 'POST',
       data: {
         'amount': amount,
+        'currency': 'USD',
       },
       ...REPLENISH_BALANCE,
    },
@@ -51,6 +52,7 @@ export const withdrawBalance = (userId, amount) => (
       method: 'POST',
       data: {
         'amount': amount,
+        'currency': 'USD',
       },
       ...WITHDRAW_BALANCE,
     },

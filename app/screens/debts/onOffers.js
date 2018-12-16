@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { debtsOweMeSelector } from '../../selectors';
 import { fetchDebtsOweMe } from '../../actions/debts';
 import OweMeDebts from '../../components/debts/oweMe.js';
@@ -20,12 +20,20 @@ class OnOfferDebtsScreen extends Component {
         current_size={record.current_size}
       />;
     });
-    return (
-      <ScrollView>
-        <Text>Debts Owe ME Screen</Text>
-        {listOfDebts}
-      </ScrollView>
-    );
+    if (this.props.debtsOweMe.length == 0) {
+      return(
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text> You haven't got any debts</Text>
+        </View>
+      )
+    }
+    else {
+      return (
+        <ScrollView>
+          {listOfDebts}
+        </ScrollView>
+      );
+    }
   }
 }
 

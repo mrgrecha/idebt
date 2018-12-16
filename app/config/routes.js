@@ -151,9 +151,9 @@ export const RootStack = createDrawerNavigator(
       }
     },
   },
-  {
-    contentComponent: DrawerContent,
-  }
+  // {
+  //   contentComponent: DrawerContent,
+  // }
 );
 
 

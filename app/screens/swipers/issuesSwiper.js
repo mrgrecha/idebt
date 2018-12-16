@@ -51,6 +51,7 @@ class IssuesSwiperScreen extends Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text> You haven't got any suitable issues</Text>
+        <Button onPress={() => this.props.navigation.pop()} title='Return back' />
       </View>
     )
   }

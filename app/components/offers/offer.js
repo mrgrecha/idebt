@@ -11,8 +11,8 @@ const Offer = ({creditFund,creditPercentage, returnPeriod, id, navigation, choos
       subtitleNumberOfLines={2}
       leftIcon={{name: 'av-timer'}}
       onPress={() => {
-        chooseIssue(id);
-        navigation.navigate('OffersSwiper');}}
+        chooseOffer(id);
+        navigation.navigate('IssuesSwiper');}}
     />
   );
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import { debtsIOweSelector, visibleErrorModal, textInErrorModal } from '../../selectors';
 import { fetchDebtsIOwe, repayDebt } from '../../actions/debts';
 import IOweDebt from '../../components/debts/iOwe.js';
@@ -23,16 +23,24 @@ class OnIssueDebtsScreen extends Component {
         repayDebt={this.props.repayDebt}
       />;
     });
-    return (
-      <ScrollView>
-        <ErrorModal
-          visible={this.props.visibleErrorModal}
-          errorText={this.props.errorText}
-          closeModal={this.props.closeModal}
-        />
-        {listOfDebts}
-      </ScrollView>
-    );
+    if (this.props.debtsIOwe.length == 0) {
+      return(
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text> You haven't got any debts</Text>
+        </View>
+      )
+    } else {
+      return (
+        <ScrollView>
+          <ErrorModal
+            visible={this.props.visibleErrorModal}
+            errorText={this.props.errorText}
+            closeModal={this.props.closeModal}
+          />
+          {listOfDebts}
+        </ScrollView>
+      );
+    }
   }
 }
 
