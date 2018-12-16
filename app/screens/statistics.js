@@ -85,7 +85,6 @@ class StatisticsScreen extends Component {
               height={400}
               chartConfig={chartConfig}
             />
-            {pieChartForDebts}
         </ScrollView>
       );
     }
